@@ -1,8 +1,16 @@
 from django.shortcuts import render
-from .models import Catalog, Product
+from .models import Catalog, Product, CatalogCategory
 # from django.http import HttpResponse
 
 
 def product_list(request):
     products = Product.objects.all()
-    return render(request, 'bikeshop/base.html', {'products': products})
+    return render(request, 'bikeshop/product_list.html', {'products': products})
+
+def catalog_list(request):
+	catalogs = Catalog.objects.all()
+	return render(request, 'bikeshop/catalog_list.html', {'catalogs': catalogs})
+
+def categories_list(request):
+	categories = CatalogCategory.objects.all()
+	return render(request, 'bikeshop/categories_list.html', {'categories': categories})
