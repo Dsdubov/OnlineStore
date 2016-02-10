@@ -36,4 +36,37 @@ class CatalogCategory(models.Model):
         return u'%s: %s - %s' % (self.catalog.name,
                                  self.parent.name,
                                  self.name)
-        return u'%s: %s' % (self.catalog.name, self.name) 
+        return u'%s: %s' % (self.catalog.name, self.name)
+
+class ProductDetail(models.Model):
+    '''
+    The ``ProductDetail`` model represents information unique to a 
+    specific product. This is a generic design that can be used 
+    to extend the information contained in the ``Product`` model with 
+    specific, extra details.
+    '''
+    product = models.ForeignKey('Product', related_name='details')
+    attribute = models.ForeignKey('ProductAttribute')
+    value = models.CharField(max_length=500)
+    description = models.TextField(blank=True)
+    def __unicode__(self):
+        return u'%s: %s - %s' % (self.product, 
+                                 self.attribute,
+                                 self.value)
+
+class ProductAttribute(models.Model):
+    '''
+    The ``ProductAttribute`` model represents a class of feature found 
+    across a set of products. It does not store any data values 
+    related to the attribute, but only describes what kind of a 
+    product feature we are trying to capture. Possible attributes 
+    include things such as materials, colors, sizes, and many, many 
+    more.
+    '''
+    name = models.CharField(max_length=300)
+    materials = models.CharField(max_length=300)
+    # colors = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    def __str__(self):
+        return self.name
+
