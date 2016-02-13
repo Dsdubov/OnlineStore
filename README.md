@@ -10,5 +10,14 @@
 Каждый каталог будет состоять из ращличных категорий. (например для велосипедов: горные, городские, шоссейнике и т.п.). Каждая категория будет уже состоять из различных продуктов. Нажав на продукт, можно будет перейти на его описание.
 На странице продуктов, а таже в описании продукта, можно будет добавлять продукт в корзину. (так же будет отображаться количество товара, которое осталось в магазине).
 При заказе товара, пользователь сможет вводить значение промокода, если имеется, и получать скидку при оплате. Оплата будет возможно при помощи paypal.
+##Прототип интерфейса
+[interface](https://github.com/Dsdubov/OnlineStore/blob/master/interface.png)
+
+<img src="https://github.com/Dsdubov/OnlineStore/blob/master/interface.png" alt="Pull" />
+##Диаграмма деятельности покупки товара
+[diagramm](https://github.com/Dsdubov/OnlineStore/blob/master/buy_product.png)
+
+<img src="https://github.com/Dsdubov/OnlineStore/blob/master/buy_product.png" alt="Pull" />
+
 ###Пробный сайт находится здесь 
 http://buybike.pythonanywhere.com/
