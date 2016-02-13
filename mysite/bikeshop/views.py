@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import Catalog, Product, CatalogCategory
-# from django.http import HttpResponse
+from django.http import HttpResponse
 
+def index(request):
+	return render(request, 'bikeshop/base.html')
 
 def product_list(request):
     products = Product.objects.all()

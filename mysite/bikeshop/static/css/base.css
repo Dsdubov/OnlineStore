@@ -3,7 +3,7 @@
 body { 
     margin:0;
     padding:0;
-    font-family:helvetica, sans-serif; 
+    font-family:helvetica, sans-serif;
 }
 
 h1, h2, h3, h4, h5 , h6 { 
@@ -115,6 +115,14 @@ ul.errorlist {
    padding:0;
 }
 
+body {
+    background-color: #909090;
+    background-image: url("bike.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 100%;
+}
 
 #header {
     padding:10px 100px;
