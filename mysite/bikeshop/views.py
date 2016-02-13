@@ -5,6 +5,9 @@ from django.http import HttpResponse
 def index(request):
 	return render(request, 'bikeshop/base.html')
 
+def product_details(request):
+	return render(request, 'bikeshop/product_detail.html')
+
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'bikeshop/product_list.html', {'products': products})

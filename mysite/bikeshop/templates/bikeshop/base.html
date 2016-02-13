@@ -1,15 +1,32 @@
 {% load staticfiles %}
 <html>
-        <head>
-            <title>BikeShop</title>
-            <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        </head>
-        <body>
-            <div class="page-header">
-                <h1><a href="/catalog">Bike Online Shop</a></h1>
-            </div>
-        </body>
-</html>
+ <title>BikeShop</title>
+ <head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="/bikeshop/base.js"></script>
+</head>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <body>
+    <header id="header">
+      <div class="container">
+        <h1><a href="/catalog">BuyBike</a></h1>
+        <nav id="nav">
+          <ul>
+            <li><a href="/catalog">Bikes</a></li>
+            <li><a href="/catalog">Bike parts</a></li>
+            <li><a href="/catalog">Accessories</a></li>
+            <li><a href="/catalog">Bike clothing</a></li>
+            <li><a href="/catalog">Chart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="content">
+      <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+</body>

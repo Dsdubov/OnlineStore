@@ -1,32 +1,14 @@
-{% load staticfiles %}
+{% extends 'bikeshop/base.html' %}
 
-<html>
-        <head>
-            <title>BikeShop</title>
-            <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        </head>
-        <body>
-            <div class="page-header">
-                <h1><a href="/">Bike Online Shop</a></h1>
-            </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% for product in products %}
-                        <div><img src="{{ product.photo.url }}" align="right", height="100", width="100"></div>
-                        <div class="product">
-                            <h1><a href="product_detail">Name: {{ product.name }}</a></h1>
-                            <p>Description: {{ product.description }}</p>
-                            <div class="price_in_dollars">
-                                Price: {{ product.price_in_dollars }}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+{% block content %}
+{% for product in products %}
+    <div><img src="{{ product.photo.url }}" align="right", height="100", width="100"></div>
+    <div class="product">
+        <h1><a href="details">Name: {{ product.name }}</a></h1>
+        <p>Description: {{ product.description }}</p>
+        <div class="price_in_dollars">
+            Price: {{ product.price_in_dollars }}
         </div>
-        </body>
-</html>
+    </div>
+{% endfor %}
+{% endblock content %}
