@@ -31,13 +31,6 @@ class CatalogCategory(models.Model):
    def __str__(self):
         return self.name
 
-   def __unicode__(self):
-    if self.parent:
-        return u'%s: %s - %s' % (self.catalog.name,
-                                 self.parent.name,
-                                 self.name)
-        return u'%s: %s' % (self.catalog.name, self.name)
-
 class ProductDetail(models.Model):
     '''
     The ``ProductDetail`` model represents information unique to a 

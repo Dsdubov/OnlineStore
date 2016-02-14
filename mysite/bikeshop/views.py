@@ -17,5 +17,5 @@ def catalog_list(request):
 	return render(request, 'bikeshop/catalog_list.html', {'catalogs': catalogs})
 
 def categories_list(request):
-	categories = CatalogCategory.objects.all()
+	categories = CatalogCategory.objects.filter(catalog=1)
 	return render(request, 'bikeshop/categories_list.html', {'categories': categories})

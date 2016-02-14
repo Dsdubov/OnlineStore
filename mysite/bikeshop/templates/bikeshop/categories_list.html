@@ -4,6 +4,7 @@
         <div class="catalog">
             <h1><a href="/products">Name: {{ category.name }}</a></h1>
             <p>Description: {{ category.description }}</p>
+            <p>Refers to catalog: {{ category.catalog }}</p>
         </div>
     {% endfor %}
 {% endblock content %}
