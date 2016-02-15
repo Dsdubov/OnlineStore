@@ -2,9 +2,11 @@
 {% block content %}
     {% for category in categories %}
         <div class="catalog">
-            <h1><a href="/products">Name: {{ category.name }}</a></h1>
+            <h1><a href="{{request.path|urlencode}}{{ category.name }}/products">{{ category.name }}</a></h1>
             <p>Description: {{ category.description }}</p>
             <p>Refers to catalog: {{ category.catalog }}</p>
         </div>
     {% endfor %}
+    <hr/>
+    <p><a href="{{request.path|urlencode}}">Back to catalogs</a></p>
 {% endblock content %}

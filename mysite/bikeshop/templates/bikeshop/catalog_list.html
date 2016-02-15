@@ -2,7 +2,7 @@
 {% block content %}
     {% for catalog in catalogs %}
         <div class="catalog">
-            <h1><a href="/categories">Name: {{ catalog.name }}</a></h1>
+            <h1><a href="/catalog/{{ catalog.name }}/categories">{{ catalog.name }}</a></h1>
             <p>Description: {{ catalog.description }}</p>
         </div>
     {% endfor %}

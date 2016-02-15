@@ -42,10 +42,8 @@ class ProductDetail(models.Model):
     attribute = models.ForeignKey('ProductAttribute')
     value = models.CharField(max_length=500)
     description = models.TextField(blank=True)
-    def __unicode__(self):
-        return u'%s: %s - %s' % (self.product, 
-                                 self.attribute,
-                                 self.value)
+    def __str__(self):
+        return str(self.product)
 
 class ProductAttribute(models.Model):
     '''
