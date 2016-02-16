@@ -3,7 +3,7 @@ import django
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.index, name='base'),
+	url(r'^$', views.start, name='start'),
 	url(r'^chart$', views.chart, name='chart'),
 	url(r'^pay$', views.pay, name='pay'),
 	url(r'^media/(?P<path>.*)$', django.views.static.serve, name='photo'),

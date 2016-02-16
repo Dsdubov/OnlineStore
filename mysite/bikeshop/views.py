@@ -8,8 +8,8 @@ dic = {"Bikes" : 1,
 		"Bike Clothing" : 4,
 		}
 
-def index(request):
-	return render(request, 'bikeshop/base.html')
+def start(request):
+	return render(request, 'bikeshop/start.html')
 
 def chart(request):
 	return render(request, 'bikeshop/chart.html')
