@@ -4,6 +4,8 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.index, name='base'),
+	url(r'^chart$', views.chart, name='chart'),
+	url(r'^pay$', views.pay, name='pay'),
 	url(r'^media/(?P<path>.*)$', django.views.static.serve, name='photo'),
     url(r'^catalog/([a-z A-Z]+)/categories/(?P<category_name>[a-z A-Z]+)/products/$', views.product_list, name='product_list'),
     url(r'^catalog/$', views.catalog_list, name='catalog_list'),

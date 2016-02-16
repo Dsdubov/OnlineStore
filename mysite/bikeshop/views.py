@@ -11,6 +11,12 @@ dic = {"Bikes" : 1,
 def index(request):
 	return render(request, 'bikeshop/base.html')
 
+def chart(request):
+	return render(request, 'bikeshop/chart.html')
+
+def pay(request):
+	return render(request, 'bikeshop/pay.html')
+
 def product_details(request, product_name):
 	product = ProductDetail.objects.get(product__name=product_name)
 	return render(request, 'bikeshop/product_detail.html', {'product' : product})
