@@ -1,99 +1,109 @@
-html {
-  background: #0000;
-}
-.container {
-  position: relative;
-  margin: 0 auto;
-  width: 94%;
-  max-width: 1100px;
-  font-family: helvetica, sans-serif;
-}
-.content {
-  position: relative;
-  padding-top: 80px;
-}
-.content p {
-  margin-bottom: 10px;
-}
-#header {
-  z-index: 1;
-  position: fixed;
-  width: 100%;
-  height: 70px;
-  line-height: 60px;
-  background: #222;
-  color white;
-}
-#header h1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-transform: uppercase;
-}
-#nav {
-  position: absolute;
-  right: 0;
-}
-#nav ul li {
-  float: left;
-  list-style-type: none;
-}
-#nav ul li a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 0 10px;
-  list-style-type: none;
-}
-@media (max-width: 599px) {
-  #header .container {
-    width: 100%;
-  }
-  #header h1 {
-    left: 3%;
-  }
-  #nav {
-    width: 100%;
-    top: 60px;
-  }
-  #nav:before {
-    content: '\2630';
-    display: block;
-    position: absolute;
-    right: 3%;
-    top: -50px;
-    line-height: 40px;
-    cursor: pointer;
-  }
-  #nav ul {
-    background: #222;
-    width: 100%;
-    list-style-type: none;
-  }
-  #nav ul li {
-    float: none;
-    list-style-type: none;
-  }
-  #nav ul li a {
-    padding: 10px 3%;
-    line-height: 20px;
-    border-top: 1px solid #333;
-  }
-  #nav ul {
-    transition: 350ms;
-    -moz-transition: 350ms;
-    -webkit-transition: 350ms;
-    transform: perspective(600) rotate3d(0, 0, 0, 0);
-    -moz-transform: perspective(600) rotate3d(0, 0, 0, 0);
-    -webkit-transform: perspective(600) rotate3d(1, 0, 0, -90deg);
-    transform-origin: 50% 0;
-    -moz-transform-origin: 50% 0;
-    -webkit-transform-origin: 50% 0;
-  }
-  #nav.open ul {
-    transform: translateY(0px);
-    -moz-transform: translateY(0px);
-    -webkit-transform: perspective(600) rotate3d(0, 0, 0, 0);
-  }
+/*********************************************
+        Product box
+*********************************************/
+.glyphicon { margin-right:5px; }
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
 
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+/*********************************************
+        Product box
+*********************************************/
+
+
+/* Dropdown Button */
+.dropbtn {
+    /*background-color: #4CAF50;*/
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    /*background-color: #3e8e41;*/
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

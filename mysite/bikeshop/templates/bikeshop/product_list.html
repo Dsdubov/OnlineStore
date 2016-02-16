@@ -1,16 +1,35 @@
 {% extends 'bikeshop/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
-{% for product in products %}
-    <div><img src="{{ product.photo.url }}" align="right", height="100", width="100"></div>
-    <div class="product">
-        <h1><a href="{{request.path|urlencode}}{{ product.name }}/details/">Name: {{ product.name }}</a></h1>
-        <p>Description: {{ product.description }}</p>
-        <div class="price_in_dollars">
-            Price: {{ product.price_in_dollars }}
+<script src="{% static 'js/base.js' %}"></script>
+<div class="container">
+    <div class="well well-sm">
+        <strong>Category Title</strong>
+        <div class="btn-group">
+            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
     </div>
-    <hr/>
-    <p><a href="{{request.path|urlencode}}">Back to categories</a></p>
-{% endfor %}
+    <div id="products" class="row list-group">
+        {% for product in products %}
+        <div class="item  col-xs-4 col-lg-4">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="http://tcritic.com/wp-content/uploads/2010/05/MPG_500.gif " alt="" />
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading"> <a href="{{request.path|urlencode}}{{ product.name }}/details/">{{ product.name }}</a></h4>
+                    <p class="group inner list-group-item-text">{{ product.description }}</p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">${{ product.price_in_dollars }}</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-success" href="/chart">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

@@ -1,12 +1,30 @@
 {% extends 'bikeshop/base.html' %}
 {% block content %}
+<div class="container">
+    <div class="row-fluid">
+      <ul class="thumbnails">
     {% for category in categories %}
-        <div class="catalog">
-            <h1><a href="{{request.path|urlencode}}{{ category.name }}/products">{{ category.name }}</a></h1>
-            <p>Description: {{ category.description }}</p>
-            <p>Refers to catalog: {{ category.catalog }}</p>
-        </div>
+        <li class="span3">
+          <div class="thumbnail" style="padding: 0">
+            <div style="padding:4px">
+              <img alt="300x200" style="width: 100px; height: 100px" src="http://placehold.it/200x150">
+            </div>
+            <div class="caption">
+              <h2><a href="{{request.path|urlencode}}{{ category.name }}/products">{{ category.name }}</a></h2>
+	            <p>Description: {{ category.description }}</p>
+	            <p>Refers to catalog: {{ category.catalog }}</p>
+            </div>
+            <div class="modal-footer" style="text-align: left">
+              <div class="row-fluid">
+                <div class="span4"><b>60</b><br/><small>COUNT</small></div>
+              </div>
+            </div>
+          </div>
+        </li>
     {% endfor %}
-    <hr/>
-    <p><a href="{{request.path|urlencode}}">Back to catalogs</a></p>
+      </ul>
+    </div>
+</div>
+<hr/>
+<p><a href="{{request.path|urlencode}}">Back to catalogs</a></p>
 {% endblock content %}
