@@ -1,12 +1,10 @@
 {% extends 'bikeshop/base.html' %}
-{% load staticfiles %}
-
 {% block content %}
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 <div class="container">
     <div class="well well-sm">
-        <strong>Category Title</strong>
+        <a href="#" id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+        <strong>Categories</strong>
         <div class="btn-group">
             <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
             </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
@@ -22,6 +20,11 @@
                     <h4 class="group inner list-group-item-heading"><a href="{{request.path|urlencode}}{{ category.name }}/products">{{ category.name }}</a></h4>
                     <p class="group inner list-group-item-text">{{ category.description }}</p>
                     <p class="group inner list-group-item-text">{{ category.catalog }}</p>
+                   <div class="row">
+                        <div class="col-xs-12 col-md-6"></div>
+                        <div class="col-md-6"></div>
+                        <div class="col-xs-12 col-md-6"></div>
+                    </div>
                 </div>
             </div>
         </div>

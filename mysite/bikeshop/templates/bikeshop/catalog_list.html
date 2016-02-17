@@ -6,11 +6,15 @@
 
 <div class="container">
     <div class="well well-sm">
-        <strong>Category Title</strong>
+            <a href="#" id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+        <strong>Catalogs</strong>
         <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
+            <a href="#" id="list" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-th-list"></span>
+            List
+            </a> 
+            <a href="#" id="grid" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
     </div>
     <div id="products" class="row list-group">
@@ -21,6 +25,11 @@
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading"><a href="/catalog/{{ catalog.name }}/categories">{{ catalog.name }}</a></h4>
                     <p class="group inner list-group-item-text">{{ catalog.description }}</p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6"></div>
+                        <div class="col-md-6"></div>
+                        <div class="col-xs-12 col-md-6"></div>
+                    </div>
                 </div>
             </div>
         </div>

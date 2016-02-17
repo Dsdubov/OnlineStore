@@ -29,3 +29,8 @@ $(document).ready(function() {
 /*********************
 Product box
 *********************/
+
+
+function goBack() {
+    window.history.back();
+}
