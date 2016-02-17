@@ -18,6 +18,14 @@
 [diagramm](https://github.com/Dsdubov/OnlineStore/blob/master/buy_product.png)
 
 <img src="https://github.com/Dsdubov/OnlineStore/blob/master/buy_product.png" alt="Pull" />
+##TODO:
+Корзина, с функциональностью
+Регистрация
+Количество товаров на странице
+Добавление товаров в корзину зарегестрированным пользователем
+Допилить верхнее меню сайта
+Добавить возможность ранжирования продуктов по параметру, на странице списка продуктов
+Добвить комментарии на сайте описания продукта
 
 ###Пробный сайт находится здесь 
 http://buybike.pythonanywhere.com/
