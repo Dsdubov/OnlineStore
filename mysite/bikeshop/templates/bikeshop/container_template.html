@@ -1,0 +1,23 @@
+{% extends 'bikeshop/base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<div class="container">
+    <div class="well well-sm">
+            <a href="#" id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+        <strong>Catalogs</strong>
+        <div class="btn-group">
+            <a href="#" id="list" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-th-list"></span>
+            List
+            </a> 
+            <a href="#" id="grid" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-th"></span>Grid</a>
+        </div>
+    </div>
+    <div id="products" class="row list-group">
+          {% block container %}
+          {% endblock container%}
+    </div>
+</div>
+{% endblock content %}
