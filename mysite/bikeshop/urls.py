@@ -5,7 +5,7 @@ import django
 from . import views
 
 urlpatterns = [
-	url(r'^login/$', views.log_in, name='log_in'),
+	url(r'^login/$', views.user_login, name='log_in'),
 	url(r'^register/$', views.register, name='registration'),
     url(r'^$', views.start, name='start'),
 	url(r'^chart$', views.chart, name='chart'),
