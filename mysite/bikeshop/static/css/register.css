@@ -18,13 +18,6 @@ Last change	: 2015/03/27
 8. Custom Checkbox & Radio
 9. Misc
 -------------------------------------------------------------------*/
-/*=== 1. General Structure ===*/
-html,
-body {
-  background: #efefef;
-  padding: 10px;
-  font-family: 'Varela Round';
-}
 /*=== 2. Anchor Link ===*/
 a {
   color: #aaaaaa;
