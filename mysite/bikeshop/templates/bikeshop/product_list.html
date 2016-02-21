@@ -1,8 +1,10 @@
 {% extends 'bikeshop/base.html' %}
+{% load staticfiles %}
+{% load static %}
 {% block content %}
 <div class="container">
     <div class="well well-sm">
-        <a href="#" id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+        <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
         <strong>Products</strong>
         <div class="btn-group">
             <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
@@ -14,7 +16,10 @@
         {% for product in products %}
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
-                <img class="group list-group-image" src="http://tcritic.com/wp-content/uploads/2010/05/MPG_500.gif " alt="" />
+                {% if product.photo %}
+                    <img class="group list-group-image" src="{% static 'media/{{prodcut.photo.url}}' %}" alt="" />
+                    <a href="">{% static 'media/product_photo/0995582ecd01d6ac2d893a063601980a.jpg' %}</a>
+                {% endif %}
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading"> <a href="{{request.path|urlencode}}{{ product.name }}/details/">{{ product.name }}</a></h4>
                     <p class="group inner list-group-item-text">{{ product.description }}</p>

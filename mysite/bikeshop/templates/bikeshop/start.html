@@ -1,9 +1,10 @@
 {% extends 'bikeshop/base.html' %}
+{% load staticfiles %}
 {% block content %}
 <div class="container">
-    <div class="row">    
+    <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <a href="/catalog"><img class="ratio img-responsive img-circle"  style="transform: scale(0.5, 0.5); background-image: url(https://d13yacurqjgara.cloudfront.net/users/273212/screenshots/1013292/infinity-bicycles_1x.png);"></a>
+            <a href="/catalog"><img class="ratio img-responsive img-circle"  style="transform: scale(0.5, 0.5); background-image: url({% static 'bikeshop/img/logo.png' %});"></a>
         </div>
     </div>
 </div>
