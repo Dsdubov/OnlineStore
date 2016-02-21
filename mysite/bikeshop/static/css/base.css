@@ -3,10 +3,12 @@
 html, body {
   position: relative;
   height: 100%;
-  background: #efefef;
+  background: white;
+  /*background: #efefef;*/
   padding: 7px;
   font-family: 'Varela Round';
 }
+
 a {
   color: #aaaaaa;
   transition: all ease-in-out 200ms;
