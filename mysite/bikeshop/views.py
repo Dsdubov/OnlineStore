@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate 
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 def start(request):
     return render(request, 'bikeshop/start.html')
@@ -34,16 +36,13 @@ def categories_list(request, catalog_name):
     categories = CatalogCategory.objects.filter(catalog__name=catalog_name)
     return render(request, 'bikeshop/categories_list.html', {'categories': categories})
 
-def log_in(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            if form.get_user():
-                login(request, form.get_user())
-                return HttpResponseRedirect('/')
-    else:
-        form = LoginForm()
-    return render(request, 'bikeshop/login.html', {'form': form})
+@login_required
+def user_logout(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+
+    # Take the user back to the homepage.
+    return HttpResponseRedirect('/')
 
 def register(request):
     # Like before, get the request's context.
