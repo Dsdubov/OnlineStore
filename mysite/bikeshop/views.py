@@ -14,8 +14,8 @@ def start(request):
 def register(request):
     return render(request, 'bikeshop/register.html')
     
-def chart(request):
-    return render(request, 'bikeshop/chart.html')
+def cart(request):
+    return render(request, 'bikeshop/cart.html')
 
 def pay(request):
     return render(request, 'bikeshop/pay.html')
