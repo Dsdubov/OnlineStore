@@ -10,6 +10,7 @@ class Catalog(models.Model):
     slug = models.SlugField(max_length=150)
     publisher = models.CharField(max_length=300)
     description = models.TextField()
+    photo = models.FileField(upload_to='bikeshop/media/catalog_photo', blank=True)
     pub_date = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.name
@@ -19,7 +20,7 @@ class Product(models.Model):
     name = models.CharField(max_length=300)
     slug = models.SlugField(max_length=150)
     description = models.TextField()
-    photo = models.FileField(upload_to='product_photo', blank=True)
+    photo = models.FileField(upload_to='bikeshop/media/product_photo', blank=True)
     manufacturer = models.CharField(max_length=300, blank=True)
     price_in_dollars = models.DecimalField(max_digits=6, decimal_places=2)
     def __str__(self):
@@ -31,6 +32,7 @@ class CatalogCategory(models.Model):
    name = models.CharField(max_length=300)
    slug =  models.SlugField(max_length=150)
    description = models.TextField(blank=True)
+   photo = models.FileField(upload_to='bikeshop/media/category_photo', blank=True)
    def __str__(self):
         return self.name
 

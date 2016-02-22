@@ -16,4 +16,4 @@ urlpatterns = [
     url(r'^catalog/$', views.catalog_list, name='catalog_list'),
     url(r'^catalog/(?P<catalog_name>[a-z A-Z 0-9]+)/categories/$', views.categories_list, name='categories_list'),
     url(r'^catalog/([a-z A-Z 0-9]+)/categories/([a-z A-Z 0-9]+)/products/(?P<product_name>[a-z A-Z 0-9]+)/details/$', views.product_details, name='product_detail')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
