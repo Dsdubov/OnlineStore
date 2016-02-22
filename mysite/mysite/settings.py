@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'bikeshop'
+    'bikeshop',
+    'orders',
+    'cart'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,3 +108,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = 'bikeshop/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'bikeshop/static')
+
+CART_SESSION_ID = 'cart'

@@ -1,0 +1,93 @@
+{% extends 'bikeshop/base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-primary btn-sm btn-block">
+                                    <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row" style="font-size: 13">
+                            <div class="col-xs-2">Picture</div>
+                            <div class="col-xs-4">Name</div>
+                            <div class="col-xs-6">
+                                <div class="col-xs-3 text-right">Product price</div>
+                                <div class="col-xs-3 text-right">Quantity</div>
+                                <div class="col-xs-4 text-right">Subtotal</div> 
+                                <div class="col-xs-1 text-right"></div>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="panel-body">
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <div class="row">
+                            <div class="col-xs-2" href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.photo %}{% static product.photo %}{% else %}{% static "http://placehold.it/100x70" %}{% endif %}" style="width: 100px; height: 100px">
+                            </div>
+                            <div class="col-xs-4">
+                                <h4 class="product-name"><strong>{{ product.name }}</strong></h4><h4><small>{{ product.description}}</small></h4>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-xs-3 text-right">
+                                    <h6><strong>${{ item.price }}</strong></h6>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                            {{item.update_quantity_form.quantity}}
+                                            {{ item.update_quantity_form.update }}
+                                            {% csrf_token %}
+                                            <a>
+                                                <button type="submit" class="btn btn-link btn-xs">
+                                                    <span class="glyphicon glyphicon-refresh"></span>
+                                                </button>
+                                            </a>
+                                    </form>
+                                </div>
+                                <div class="col-xs-4 text-right">
+                                    ${{ item.total_price }}
+                                </div> 
+                                <div class="col-xs-1 text-right">
+                                    <a href="{% url "cart:cart_remove" product.id %}">
+                                        <button type="button" class="btn btn-link">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endwith %}
+                {% endfor %}
+                </div>
+                <div class="panel-footer">
+                    <div class="row text-center">
+                        <div class="col-xs-9">
+                            <h4 class="text-right">Total <strong>${{ cart.get_total_price }}</strong></h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" class="btn btn-success btn-block">
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

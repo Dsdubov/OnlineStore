@@ -7,6 +7,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from cart.forms import CartAddProductForm
+
 
 def start(request):
     return render(request, 'bikeshop/start.html')
@@ -25,8 +27,9 @@ def product_details(request, product_name):
     return render(request, 'bikeshop/product_detail.html', {'product' : product})
 
 def product_list(request, category_name):
+    cart_product_form = CartAddProductForm()
     products = Product.objects.filter(category__name=category_name)
-    return render(request, 'bikeshop/product_list.html', {'products': products})
+    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form})
 
 def catalog_list(request):
     catalogs = Catalog.objects.all()
