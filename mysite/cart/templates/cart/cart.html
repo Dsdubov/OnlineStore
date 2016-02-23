@@ -15,19 +15,19 @@
                                 <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
                             </div>
                             <div class="col-xs-6">
-                                <button type="button" class="btn btn-primary btn-sm btn-block">
-                                    <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-                                </button>
+                                <a type="button" class="btn btn-primary btn-sm btn-block" href="/">
+                                    <span class="glyphicon glyphicon-share-alt" ></span> Continue shopping
+                                </a>
                             </div>
                         </div>
                         <div class="row" style="font-size: 13">
-                            <div class="col-xs-2">Picture</div>
-                            <div class="col-xs-4">Name</div>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-4"></div>
                             <div class="col-xs-6">
-                                <div class="col-xs-3 text-right">Product price</div>
-                                <div class="col-xs-4 text-right">Quantity</div>
-                                <div class="col-xs-3 text-right">Subtotal</div> 
-                                <div class="col-xs-1 text-right"></div>
+                                <div class="col-xs-3 text-center">Product price</div>
+                                <div class="col-xs-4 text-center">Quantity</div>
+                                <div class="col-xs-3 text-center">Subtotal</div> 
+                                <div class="col-xs-1"></div>
                             </div>
                         </div>                       
                     </div>
@@ -37,16 +37,16 @@
                     {% with product=item.product %}
                         <div class="row">
                             <div class="col-xs-2" href="{{ product.get_absolute_url }}">
-                                <img src="{% if product.photo %}{% static product.photo %}{% else %}{% static "http://placehold.it/100x70" %}{% endif %}" style="width: 100px; height: 100px">
+                                <img src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image.png" %}{% endif %}" style="width: 100px; height: 70px">
                             </div>
                             <div class="col-xs-4">
                                 <h4 class="product-name"><strong>{{ product.name }}</strong></h4><h4><small>{{ product.description}}</small></h4>
                             </div>
                             <div class="col-xs-6">
-                                <div class="col-xs-3 text-right">
+                                <div class="col-xs-3 text-center">
                                     <h6><strong>${{ item.price }}</strong></h6>
                                 </div>
-                                <div class="col-xs-4 text-right">
+                                <div class="col-xs-4 text-center">
                                     <form action="{% url "cart:cart_add" product.id %}" method="post">
                                             {{item.update_quantity_form.quantity}}
                                             {{ item.update_quantity_form.update }}
@@ -58,10 +58,10 @@
                                             </a>
                                     </form>
                                 </div>
-                                <div class="col-xs-3 text-right">
+                                <div class="col-xs-3 text-center">
                                     ${{ item.total_price }}
                                 </div> 
-                                <div class="col-xs-1 text-right">
+                                <div class="col-xs-1 text-center">
                                     <a href="{% url "cart:cart_remove" product.id %}">
                                         <button type="button" class="btn btn-link">
                                             <span class="glyphicon glyphicon-trash"></span>
@@ -80,9 +80,7 @@
                             <h4 class="text-right">Total <strong>${{ cart.get_total_price }}</strong></h4>
                         </div>
                         <div class="col-xs-3">
-                            <button type="button" class="btn btn-success btn-block">
-                                Checkout
-                            </button>
+                            <a type="Button" href="{% url "orders:order_create" %}" class="btn btn-success btn-block">Checkout</a>
                         </div>
                     </div>
                 </div>
