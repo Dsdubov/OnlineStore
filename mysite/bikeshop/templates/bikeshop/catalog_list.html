@@ -19,10 +19,8 @@
         {% for catalog in catalogs %}
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
-                {% if catalog.photo %}
-                    <img class="group list-group-image" src="{% static catalog.photo %}" alt="" style="width:400px;
+                <img class="group list-group-image" src="{% if catalog.photo %}{% static catalog.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:400px;
 height:250px;">
-                {% endif %}
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading"><a href="/catalog/{{ catalog.name }}/categories">{{ catalog.name }}</a></h4>
                     <p class="group inner list-group-item-text">{{ catalog.description }}</p>

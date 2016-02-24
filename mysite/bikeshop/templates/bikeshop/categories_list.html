@@ -15,10 +15,8 @@
         {% for category in categories %}
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
-                {% if category.photo %}
-                    <img class="group list-group-image" src="{% static category.photo %}" alt="" style="width:400px;
-height:250px;">
-                {% endif %}
+                <img class="group list-group-image" src="{% if category.photo %}{% static category.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:400px;
+    height:250px;">
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading"><a href="{{request.path|urlencode}}{{ category.name }}/products">{{ category.name }}</a></h4>
                     <p class="group inner list-group-item-text">{{ category.description }}</p>
