@@ -20,7 +20,8 @@
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
                 {% if catalog.photo %}
-                    <img class="group list-group-image" src="{% static catalog.photo %}" alt="">
+                    <img class="group list-group-image" src="{% static catalog.photo %}" alt="" style="width:400px;
+height:250px;">
                 {% endif %}
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading"><a href="/catalog/{{ catalog.name }}/categories">{{ catalog.name }}</a></h4>

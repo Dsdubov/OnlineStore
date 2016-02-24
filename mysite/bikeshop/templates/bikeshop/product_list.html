@@ -16,11 +16,12 @@
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
                 {% if product.photo %}
-                    <img class="group list-group-image" src="{% static product.photo %}" alt="">
+                    <img class="group list-group-image" src="{% static product.photo %}" alt="" style="width:400px;
+height:250px;">
                 {% endif %}
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading"> <a href="{{request.path|urlencode}}{{ product.name }}/details/">{{ product.name }}</a></h4>
-                    <p class="group inner list-group-item-text">{{ product.description }}</p>
+                    <p class="group inner list-group-item-text" id="description">{{ product.description }}</p>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <p class="lead">${{ product.price_in_dollars }}</p>
@@ -34,8 +35,9 @@
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                 {% csrf_token %}
                                 {{ cart_product_form }}
-                                <button type="submit" class="btn-group cart">
-                                    <a class="glyphicon glyphicon-shopping-cart" href="/cart">Add to cart</a>
+                                </br>
+                                <button type="submit" class="btn btn-primary active">
+                                    <a class="glyphicon glyphicon-shopping-cart">Add to cart</a>
                                 </button>
                             </form>
                         </div>

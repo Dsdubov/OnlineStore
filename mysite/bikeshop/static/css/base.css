@@ -1,5 +1,3 @@
-/* Footer styles
--------------------------------------------------- */
 html, body {
   position: relative;
   height: 100%;
@@ -28,10 +26,9 @@ a:hover {
   float: right;
   width: 200px
 }
-
-/* Set the fixed height of the footer here */
 #push,
 #footer {
+  padding: 10px;
   height: 35px;
 }
 #footer {
@@ -128,6 +125,8 @@ a, p, h, h1, h2, h3, h4, div, button {
 
 .item.list-group-item img
 {
+    width:400px;
+    height:250px;
     float: left;
 }
 .item.list-group-item:after
@@ -138,9 +137,13 @@ a, p, h, h1, h2, h3, h4, div, button {
 {
     margin: 0 0 11px;
 }
-
-
-
+#description {
+  width: 300px;
+  height: 25px; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+}
 
 
 /*****************
