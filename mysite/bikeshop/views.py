@@ -23,8 +23,9 @@ def pay(request):
     return render(request, 'bikeshop/pay.html')
 
 def product_details(request, product_name):
+    cart_product_form = CartAddProductForm()
     product = ProductDetail.objects.get(product__name=product_name)
-    return render(request, 'bikeshop/product_detail.html', {'product' : product})
+    return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form})
 
 def product_list(request, category_name):
     cart_product_form = CartAddProductForm()

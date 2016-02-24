@@ -11,8 +11,7 @@
                     <div class="product col-md-3 service-image-left">
                         <center>
                             {% if product.product.photo %}
-                                <img class="group list-group-image" src="{% static product.product.photo %}" alt="" style="width:400px;
-height:250px;"></img>
+                                <img class="group list-group-image" src="{% static product.product.photo %}" alt=""></img>
                             {% endif %}
                         </center>
                     </div>
@@ -46,14 +45,14 @@ height:250px;"></img>
                     <div class="product-price">$ {{ product.value }}</div>
                     <div class="product-stock">In Stock</div>
                     <hr>
-                    <form action="{% url "cart:cart_add" product.product.id %}" method="post">
-                        {% csrf_token %}
-                        {{ cart_product_form }}
-                        </br>
-                        <button type="submit" class="btn-group cart" alt="" style="background: none; border: none">
-                            <a class="glyphicon glyphicon-shopping-cart">Add to cart</a>
-                        </button>
-                    </form>
+                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                {% csrf_token %}
+                                {{ cart_product_form }}
+                                </br>
+                                <button type="submit" class="btn btn-primary active">
+                                    <a class="glyphicon glyphicon-shopping-cart">Add to cart</a>
+                                </button>
+                            </form>
                     <hr>
                     <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
                 </div>
