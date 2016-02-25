@@ -42,7 +42,7 @@
                     <div class="product-desc">{{ product.description }}</div>
                     <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
                     <hr>
-                    <div class="product-price">$ {{ product.value }}</div>
+                    <div class="product-price">$ {{ product.product.price_in_dollars }}</div>
                     <div class="product-stock">In Stock</div>
                     <hr>
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
