@@ -32,9 +32,8 @@
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                 {% csrf_token %}
                                 {{ cart_product_form }}
-                                </br>
-                                <button type="submit" class="btn btn-primary active">
-                                    <a class="glyphicon glyphicon-shopping-cart">Add to cart</a>
+                                <button type="submit" class="btn btn-success waves-effect waves-light">
+                                    <a>Add</a><i class="glyphicon glyphicon-shopping-cart"></i>
                                 </button>
                             </form>
                         </div>

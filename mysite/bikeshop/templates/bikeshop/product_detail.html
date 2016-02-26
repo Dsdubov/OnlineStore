@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
 
 <div class="container-fluid">
+                    <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
     <div class="content-wrapper">   
         <div class="item-container">    
             <div class="container"> 
@@ -45,16 +46,16 @@
                     <div class="product-price">$ {{ product.product.price_in_dollars }}</div>
                     <div class="product-stock">In Stock</div>
                     <hr>
+                    <div class="col-md-3">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                 {% csrf_token %}
                                 {{ cart_product_form }}
                                 </br>
-                                <button type="submit" class="btn btn-primary active">
-                                    <a class="glyphicon glyphicon-shopping-cart">Add to cart</a>
+                                <button type="submit" class="btn btn-success waves-effect waves-light">
+                                    <a>Add</a><i class="glyphicon glyphicon-shopping-cart"></i>
                                 </button>
                             </form>
-                    <hr>
-                    <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+                    </div>
                 </div>
             </div> 
         </div>
