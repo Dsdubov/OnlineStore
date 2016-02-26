@@ -6,6 +6,18 @@ html, body {
   margin-top: 50px;
   font-family: 'Varela Round';
 }
+
+@media (max-width: 767px) {
+  html, body {
+  position: relative;
+  height: 100%;
+  background: #efefef;
+  padding: 10px;
+  margin-top: 70px;
+  font-family: 'Varela Round';
+}
+}
+
 a {
   color: #aaaaaa;
   transition: all ease-in-out 200ms;
