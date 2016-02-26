@@ -34,20 +34,3 @@ Product box
 function goBack() {
     window.history.back();
 }
-
-/**********************
-Adding to cart
-**********************/
-// $(document).ready(function(){
-//   $( "button.btn" ).click(function(){
-//     var current_button = $(this);
-//     $.ajax({
-//         url: "/add/",
-//         type: "GET",
-//         data: {"item": $(this).attr('id')},
-//         success: function(data){
-//           current_button.replaceWith( data );
-//         }
-//     });
-//    });
-// });

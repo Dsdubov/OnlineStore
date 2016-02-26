@@ -21,6 +21,8 @@ def order_create(request):
             # launch asynchronous task
             # order_created.delay(order.id)
             return render(request, 'orders/order/created.html', {'order': order})
+        else:
+            print("Not valid")
     else:
         form = OrderCreateForm()
     return render(request, 'orders/order/create.html', {'cart': cart,
