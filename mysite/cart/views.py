@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from bikeshop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
-
+from django.http import HttpResponseRedirect
 
 @require_POST
 def cart_add(request, product_id):
@@ -15,7 +15,8 @@ def cart_add(request, product_id):
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-    return redirect('cart:cart_detail')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    # return redirect(request.path)
 
 
 def cart_remove(request, product_id):

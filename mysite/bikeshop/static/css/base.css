@@ -36,7 +36,7 @@ a:hover {
     clear:both;
     text-align:center;
     font-family: font-effect-3d-float;
-    font-size: 16px;
+    font-size: 14px;
 
 }
 
@@ -86,6 +86,7 @@ a, p, h, h1, h2, h3, h4, div, button {
     -webkit-border-radius: 10px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+    /*background: #DC143C;*/
 }
 
 .item.list-group-item
@@ -97,7 +98,7 @@ a, p, h, h1, h2, h3, h4, div, button {
 }
 .item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
 {
-    background: #428bca;
+    background: #DC143C;
 }
 
 .item.list-group-item .list-group-image
