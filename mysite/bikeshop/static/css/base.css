@@ -2,8 +2,8 @@ html, body {
   position: relative;
   min-height: 100%;
   background: #efefef;
-  margin-top: 50px;
   padding-bottom: 0px;
+  padding-top: 0px;
   font-family: 'Varela Round';
 }
 
