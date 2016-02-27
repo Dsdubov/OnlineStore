@@ -44,12 +44,16 @@
                     <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
                     <hr>
                     <div class="product-price">$ {{ product.product.price_in_dollars }}</div>
-                    <div class="product-stock">In Stock</div>
+                    {% if product.product.quantity > 0 %}
+                    <div class="product-stock">In Stock: {{ product.product.quantity }}</div>
+                    {% else %}
+                    <div class="product-stock" style="color: red">Not in Stock</div>
+                    {% endif %}
                     <hr>
                     <div class="col-md-3">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                {{ cart_product_form.quantity }}
                                 {% csrf_token %}
-                                {{ cart_product_form }}
                                 </br>
                                 <button type="submit" class="btn btn-success waves-effect waves-light">
                                     <a>Add</a><i class="glyphicon glyphicon-shopping-cart"></i>

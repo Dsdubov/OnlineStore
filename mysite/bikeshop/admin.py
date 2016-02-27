@@ -10,7 +10,7 @@ admin.site.register(Catalog)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'category', 'price_in_dollats', 'manufacturer']
     list_filter = ['price_in_dollats', 'category']
-    list_editable = ['price_in_dollats']
+    list_editable = ['price_in_dollars', 'quantity']
     prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Product)

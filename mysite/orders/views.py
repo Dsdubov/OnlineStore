@@ -16,6 +16,8 @@ def order_create(request):
                                          product=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
+                item['product'].quantity -= item['quantity']
+                item['product'].save()
             # clear the cart
             cart.clear()
             # launch asynchronous task

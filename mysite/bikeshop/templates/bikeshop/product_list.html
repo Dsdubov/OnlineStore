@@ -27,11 +27,21 @@
                             <a class="glyphicon glyphicon-thumbs-up">Like</a> 
                         </div>
                         </br>
-
+                        {% if product.quantity > 0 %}
+                        <div class="product-stock">In Stock: {{ product.quantity }}</div>
+                        {% else %}
+                        <div class="product-stock" style="color: red">Not in Stock</div>
+                        {% endif %}
                         <div class="col-xs-12 col-md-6">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                <div class="row">
+                                    <!-- {{ field.label_tag }} {{ field }} -->
+                                    <div class="input-field col-md-8">
+                                      <label class="col-md-8" id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
+                                      {{ cart_product_form.quantity }}
+                                    </div>
+                                </div>
                                 {% csrf_token %}
-                                {{ cart_product_form }}
                                 <button type="submit" class="btn btn-success waves-effect waves-light">
                                     <a>Add</a><i class="glyphicon glyphicon-shopping-cart"></i>
                                 </button>

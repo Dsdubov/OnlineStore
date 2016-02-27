@@ -23,6 +23,7 @@ class Product(models.Model):
     photo = models.FileField(upload_to='bikeshop/media/product_photo', blank=True)
     manufacturer = models.CharField(max_length=300, blank=True)
     price_in_dollars = models.DecimalField(max_digits=6, decimal_places=2)
+    quantity = models.IntegerField(default=0)
     def __str__(self):
         return self.name
 
