@@ -38,12 +38,23 @@ function goBack() {
 /****************************
 Static to fixed navbar
 ****************************/
-$(document).scroll(function(e){
-    var scrollTop = $(document).scrollTop();
-    if(scrollTop > 0){
-        console.log(scrollTop);
-        $('.navbar').removeClass('navbar-static-top').addClass('navbar-fixed-top');
-    } else {
-        $('.navbar').removeClass('navbar-fixed-top').addClass('navbar-static-top');
+
+
+function FixedTopMenuOnScroll() {
+    var winHeight = $(".site-header").height();//any image,logo or header above menu
+    winHeight = winHeight - $('.navbar').height();
+    function checkMenuOnTop() {
+        if ($(window).scrollTop() > winHeight) {
+            $('.navbar').addClass("navbar-fixed-top");
+        }
+        else {
+            $('.navbar').removeClass("navbar-fixed-top");
+        }
     }
-});
+    checkMenuOnTop();
+    $(window).scroll(function () {
+        checkMenuOnTop();
+    });
+  }
+  FixedTopMenuOnScroll();
+
