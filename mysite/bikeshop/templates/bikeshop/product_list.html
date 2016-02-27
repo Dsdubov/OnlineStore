@@ -26,12 +26,14 @@
                         <div class="col-md-6">
                             <a class="glyphicon glyphicon-thumbs-up">Like</a> 
                         </div>
+                        <div class="col-md-6">
+                            {% if product.quantity > 0 %}
+                            <div class="bold-700 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
+                            {% else %}
+                            <div class="bold-700 " style="color: #ff4444">Not in Stock</div>
+                            {% endif %}
+                        </div>
                         </br>
-                        {% if product.quantity > 0 %}
-                        <div class="product-stock">In Stock: {{ product.quantity }}</div>
-                        {% else %}
-                        <div class="product-stock" style="color: red">Not in Stock</div>
-                        {% endif %}
                         <div class="col-xs-12 col-md-6">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                 <div class="row">

@@ -1,6 +1,7 @@
 from django.db import models
 from bikeshop.models import Product
 
+STATUS_CHOICES = (('c0', 'Accepted'), ('c1', 'In progress'), ('c2', 'Shipped'), ('c3', 'Delivered'), ('c4', 'Completed'))
 
 class Order(models.Model):
     first_name = models.CharField(max_length=50)
@@ -12,6 +13,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='c0')
 
     class Meta:
         ordering = ('-created',)
