@@ -50,8 +50,10 @@
                                 </div>
                                 <div class="col-xs-4 text-center">
                                     <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                            {{ item.update_quantity_form.quantity }}
-                                            {{ item.update_quantity_form.update }}
+                                        <div class="row">
+                                              {{ item.update_quantity_form.quantity }}
+                                              {{ item.update_quantity_form.update }}
+                                        </div>
                                             {% csrf_token %}
                                             <a>
                                                 <button type="submit" class="btn btn-primary btn-floating waves-effect waves-light">

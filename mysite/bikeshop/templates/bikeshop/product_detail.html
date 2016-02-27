@@ -52,7 +52,12 @@
                     <hr>
                     <div class="col-md-3">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                {{ cart_product_form.quantity }}
+                                <div class="row">
+                                    <div class="input-field">
+                                      <label id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
+                                      {{ cart_product_form.quantity }}
+                                    </div>
+                                </div>
                                 {% csrf_token %}
                                 </br>
                                 <button type="submit" class="btn btn-success waves-effect waves-light">

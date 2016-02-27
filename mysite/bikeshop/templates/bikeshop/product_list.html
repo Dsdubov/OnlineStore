@@ -35,9 +35,8 @@
                         <div class="col-xs-12 col-md-6">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                 <div class="row">
-                                    <!-- {{ field.label_tag }} {{ field }} -->
-                                    <div class="input-field col-md-8">
-                                      <label class="col-md-8" id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
+                                    <div class="input-field col-md-10">
+                                      <label class="col-md-10" id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
                                       {{ cart_product_form.quantity }}
                                     </div>
                                 </div>
