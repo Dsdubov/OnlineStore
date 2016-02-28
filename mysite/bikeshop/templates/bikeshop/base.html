@@ -29,7 +29,7 @@
 </head>
   <body bgcolor="#E6E6FA">
   <!--Navigation-->
-  <nav class="navbar z-depth-1" role="navigation" style="background: orange" id="header">
+  <nav class="navbar navbar-static-top z-depth-1" role="navigation" style="background: orange" id="header">
           <a class="navbar-brand" href="/">
                     <img class="ratio img-responsive img-circle"  style=" max-width:200px; max-height:200px; margin-top: -12px;transform: scale(1, 1); background-image: url({% static 'bikeshop/img/logo.png' %});">
           </a>
@@ -72,13 +72,12 @@
                   </div>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/cart"><i class="glyphicon glyphicon-shopping-cart"></i>Cart</a></li>
+                <li><a href="/cart" class="navbar-brand waves-effect waves-light"><i class="material-icons">shopping_cart</i>Cart</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout" class="navbar-brand waves-effect waves-light">Logout</a></li>
                 {% else %}
-                <li><a href="/login">Login</a></li>
+                <li><a href="/login" class="navbar-brand waves-effect waves-light"><i class="material-icons">account_circle</i>Login</a></li>
                 {% endif %}
-                <li><a href="/register">Register</a></li>
               </ul>
             </div>
         </div>

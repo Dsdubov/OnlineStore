@@ -27,8 +27,9 @@ def product_details(request, product_name):
 def product_list(request, category_name):
     cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
+    catalog = CatalogCategory.objects.get(name=category_name)
     cart_product_form = CartAddProductForm()
-    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'cart': cart})
+    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'cart': cart, 'catalog' : catalog, 'category' : category_name})
 
 def catalog_list(request):
     catalogs = Catalog.objects.all()
@@ -36,7 +37,7 @@ def catalog_list(request):
 
 def categories_list(request, catalog_name):
     categories = CatalogCategory.objects.filter(catalog__name=catalog_name)
-    return render(request, 'bikeshop/categories_list.html', {'categories': categories})
+    return render(request, 'bikeshop/categories_list.html', {'categories': categories, 'catalog' : catalog_name})
 
 @login_required
 def user_logout(request):
