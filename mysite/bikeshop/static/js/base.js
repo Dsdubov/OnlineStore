@@ -40,21 +40,21 @@ Static to fixed navbar
 ****************************/
 
 
-function FixedTopMenuOnScroll() {
-    var winHeight = $(".site-header").height();//any image,logo or header above menu
-    winHeight = winHeight - $('.navbar').height();
-    function checkMenuOnTop() {
-        if ($(window).scrollTop() > winHeight) {
-            $('.navbar').addClass("navbar-fixed-top");
-        }
-        else {
-            $('.navbar').removeClass("navbar-fixed-top");
-        }
-    }
-    checkMenuOnTop();
-    $(window).scroll(function () {
-        checkMenuOnTop();
-    });
-  }
-  FixedTopMenuOnScroll();
+// function FixedTopMenuOnScroll() {
+//     var winHeight = $(".site-header").height();//any image,logo or header above menu
+//     winHeight = winHeight - $('.navbar').height();
+//     function checkMenuOnTop() {
+//         if ($(window).scrollTop() > winHeight) {
+//             $('.navbar').addClass("navbar-fixed-top");
+//         }
+//         else {
+//             $('.navbar').removeClass("navbar-fixed-top");
+//         }
+//     }
+//     checkMenuOnTop();
+//     $(window).scroll(function () {
+//         checkMenuOnTop();
+//     });
+//   }
+//   FixedTopMenuOnScroll();
 
