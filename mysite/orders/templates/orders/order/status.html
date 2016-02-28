@@ -34,9 +34,7 @@
                 <li class="list-group-item">
                     <span class="prefix">Last update:</span>
                     <span class="label label-success">{{ order.updated }}</span>
-                </li><!-- 
-                <li class="list-group-item">You can find out latest status of your order with the following link:</li>
-                <li class="list-group-item"><a href="//tracking/link/goes/here">//tracking/link/goes/here</a></li> -->
+                </li>
             </ul>
 
             <div class="order-status">
@@ -68,9 +66,8 @@
                 </div>
 
             </div>
+            {% endif %}
         </div>
     </div>
-    {% endif %}
-
 </div>
 {% endblock content %}
