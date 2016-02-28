@@ -45,5 +45,6 @@ add Breadcrumbs and Paginations
 15. Изменить страницу заказа
 16. Добавить Wishlist
 17. Сделать на странице продуктов подбор велосипеда по праметрам
+
 ###Пробный сайт находится здесь 
 http://buybike.pythonanywhere.com/
