@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'blog',
     'bikeshop',
     'orders',
-    'cart'
+    'cart',
+    'fun_templates'
 )
 
 MIDDLEWARE_CLASSES = (

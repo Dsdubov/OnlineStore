@@ -5,6 +5,7 @@ from django.conf import settings
 
 
 urlpatterns = [
+    url(r'^fun/', include('fun_templates.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^cart/', include('cart.urls', namespace="cart")),
     url(r'^orders/', include('orders.urls', namespace='orders')),    
