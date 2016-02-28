@@ -31,9 +31,9 @@ Product box
 *********************/
 
 
-function goBack() {
-    window.history.back();
-}
+// function goBack() {
+//     window.history.back();
+// }
 
 /****************************
 Static to fixed navbar
