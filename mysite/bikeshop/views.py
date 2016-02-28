@@ -8,13 +8,10 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from cart.forms import CartAddProductForm
-
+from cart.cart import Cart
 
 def start(request):
     return render(request, 'bikeshop/start.html')
-
-def register(request):
-    return render(request, 'bikeshop/register.html')
     
 def cart(request):
     return render(request, 'bikeshop/cart.html')
@@ -28,9 +25,10 @@ def product_details(request, product_name):
     return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form})
 
 def product_list(request, category_name):
+    cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
     cart_product_form = CartAddProductForm()
-    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form})
+    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'cart': cart})
 
 def catalog_list(request):
     catalogs = Catalog.objects.all()

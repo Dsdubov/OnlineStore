@@ -1,3 +1,4 @@
+
 html, body {
   position: relative;
   height: 100%;
@@ -115,8 +116,8 @@ a, p, h, h1, h2, h3, h4, div, button {
 
 .item.list-group-item img
 {
-    width:400px;
-    height:250px;
+    max-width:400px;
+    max-height:250px;
     float: left;
 }
 .item.list-group-item:after
