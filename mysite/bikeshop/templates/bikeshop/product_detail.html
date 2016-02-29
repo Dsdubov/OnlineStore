@@ -44,6 +44,11 @@
                     <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
                     <hr>
                     <div class="product-price">$ {{ product.product.price_in_dollars }}</div>
+                    {% if product.id in wishlist %}
+                    <a type="button" class="btn-floating btn-small waves-effect waves-light red darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                    {% else %}
+                    <a type="button" class="btn-floating btn-small waves-effect waves-light blue darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                    {% endif %}
                     {% if product.product.quantity > 0 %}
                     <div class="product-stock">In Stock: {{ product.product.quantity }}</div>
                     {% else %}
