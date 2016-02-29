@@ -42,20 +42,24 @@
         </div>
         <!-- Modal -->
 
-<div class="container">
+<!-- <div class="container"> -->
     <div class="well well-sm">
-       <a id="" class="btn btn-default btn-sm" href="javascript:history.go(-1);"><span class="glyphicon">Back</span></a>
-        <strong>{{ catalog }}/{{ category }}/Products</strong>
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
+        <ol class="breadcrumb">
+            <a id="" class="btn btn-default btn-sm" href="javascript:history.go(-1);"><span class="glyphicon">Back</span></a>
+              <li><a href="{{ catalog.path|urlencode }}">{{ catalog }}</a></li>
+              <li><a href="{{ catalog.path|urlencode }}">{{ category }}</a></li>
+              <li class="active">Products</li>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+                </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                    class="glyphicon glyphicon-th"></span>Grid</a>
+            </div>
         <span class="text-right">
         <!--Trigger button-->
             <a class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#cart-modal"><i class="material-icons">shopping_cart</i> <span>Cart</span> </a><span class="badge social-counter">{{ cart.len }}</span>
         <!--Trigger button-->
         </span>
+        </ol>
     </div>
     <div id="products" class="row list-group">
         {% for product in products %}
@@ -198,5 +202,5 @@
         </div>
         {% endfor %}
     </div>
-</div>
+<!-- </div> -->
 {% endblock content %}

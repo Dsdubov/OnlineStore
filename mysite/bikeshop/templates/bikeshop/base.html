@@ -16,20 +16,22 @@
     <link href="http://mdbootstrap.com/mdbcdn/mdb.min.css" rel="stylesheet">   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://mdbootstrap.com/mdbcdn/mdb.min.js"></script>
-
-
+      
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
     <script src="{% static 'js/base.js' %}"></script>
 
 
 </head>
   <body bgcolor="#E6E6FA">
+
+
   <!--Navigation-->
-  <nav class="navbar navbar-default z-depth-1" role="navigation" style="background: orange" id="header">
+  <nav class="navbar navbar-default z-depth-1" role="navigation" style="background: #4B515D" id="header">
           <a class="navbar-brand" href="/">
                     <img class="ratio img-responsive img-circle"  style=" max-width:200px; max-height:200px; margin-top: -12px;transform: scale(1, 1); background-image: url({% static 'bikeshop/img/logo.png' %});">
           </a>
@@ -86,13 +88,53 @@
               </ul>
             </div>
         </div>
-    </nav>
-    <div id="wrap">
-          {% block content %}
-          {% endblock content %}
-          <div class="push"></div>
+  </nav>
+<nav class="navbar navbar-default sidebar" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
     </div>
-     <div id="footer" class="footer  page-footer blue center-on-small-only" style="background: blue">
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+          <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a href="#">Modificar</a></li>
+            <li><a href="#">Reportar</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Informes</a></li>
+          </ul>
+        </li>          
+        <li ><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>        
+        <li ><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="wrap">
+      <div class="container">
+      <div class="row">
+      <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            {% block content %}
+            {% endblock content %}
+        </div>
+      <div class="col-md-2"></div>
+        </div>
+      </div>
+            <div class="push"></div>
+    </div>
+     <div id="footer" class="footer  page-footer #212121 center-on-small-only" style="background: #212121">
        <div class="container-fluid">
               <div class="row">
                   <div class="col-md-6">

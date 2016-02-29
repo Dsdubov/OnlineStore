@@ -1,17 +1,21 @@
 {% extends 'bikeshop/base.html' %}
 {% load staticfiles %}
 {% block content %}
-<div class="container">
+<!-- <div class="container"> -->
     <div class="well well-sm">
+        <ol class="breadcrumb">
         <a id="" class="btn btn-default btn-sm" href="javascript:history.go(-1);"><span class="glyphicon">Back</span></a>
-        <strong>{{ catalog }}/Categories</strong>
+          <li><a href="{{ catalog.path|urlencode }}">{{ catalog }}</a></li>
+          <li class="active">Categories</li>
         <div class="btn-group">
             <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
             </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
                 class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
+        </ol>
+        <!-- <strong>{{ catalog }}/Categories</strong> -->
     </div>
-    <div id="products" class="row list-group">
+    <div id="products" class="list-group">
         {% for category in categories %}
         <div class="item  col-xs-2 col-lg-2">
             <div class="thumbnail card card-product hoverable">
@@ -29,5 +33,5 @@
         </div>
         {% endfor %}
     </div>
-</div>
+<!-- </div> -->
 {% endblock content %}

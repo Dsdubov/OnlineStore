@@ -57,4 +57,3 @@ Static to fixed navbar
 //     });
 //   }
 //   FixedTopMenuOnScroll();
-
