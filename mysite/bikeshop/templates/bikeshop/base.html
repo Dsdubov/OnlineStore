@@ -22,6 +22,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://mdbootstrap.com/mdbcdn/mdb.min.js"></script>
       
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
     <script src="{% static 'js/base.js' %}"></script>
 
@@ -30,8 +31,72 @@
   <body bgcolor="#E6E6FA">
 
 
+<div class="nav-side-menu">
+    <div class="brand">Brand Logo</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a href="#">
+                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                  </a>
+                </li>
+
+                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                  <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="products">
+                    <li class="active"><a href="#">CSS3 Animation</a></li>
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Buttons</a></li>
+                    <li><a href="#">Tabs & Accordions</a></li>
+                    <li><a href="#">Typography</a></li>
+                    <li><a href="#">FontAwesome</a></li>
+                    <li><a href="#">Slider</a></li>
+                    <li><a href="#">Panels</a></li>
+                    <li><a href="#">Widgets</a></li>
+                    <li><a href="#">Bootstrap Model</a></li>
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service">
+                  <li>New Service 1</li>
+                  <li>New Service 2</li>
+                  <li>New Service 3</li>
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                  <li>New New 1</li>
+                  <li>New New 2</li>
+                  <li>New New 3</li>
+                </ul>
+
+
+                 <li>
+                  <a href="#">
+                  <i class="fa fa-user fa-lg"></i> Profile
+                  </a>
+                  </li>
+
+                 <li>
+                  <a href="#">
+                  <i class="fa fa-users fa-lg"></i> Users
+                  </a>
+                </li>
+            </ul>
+     </div>
+</div>
   <!--Navigation-->
-  <nav class="navbar navbar-default z-depth-1" role="navigation" style="background: #4B515D" id="header">
+  <nav class="navbar navbar-default z-depth-1" role="navigation" style="background: #4B515D; margin-left:200px;" id="header">
           <a class="navbar-brand" href="/">
                     <img class="ratio img-responsive img-circle"  style=" max-width:200px; max-height:200px; margin-top: -12px;transform: scale(1, 1); background-image: url({% static 'bikeshop/img/logo.png' %});">
           </a>
@@ -44,7 +109,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand waves-effect waves-light" href="/">
-                    <p>BuyBike</p>
+                    BuyBike
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,7 +132,7 @@
                     </ul>
                   </li>
               </ul>
-                <form class="navbar-form navbar-left" role="search">
+              <form class="navbar-form navbar-left" role="search">
                   <div class="form-group waves-effect waves-light">
                       <input type="text" class="form-control" placeholder="Search">
                       <button type="submit" class="btn btn-primary" style="background: none">Submit</button>
@@ -89,52 +154,18 @@
             </div>
         </div>
   </nav>
-<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-    </div>
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="#">Modificar</a></li>
-            <li><a href="#">Reportar</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Informes</a></li>
-          </ul>
-        </li>          
-        <li ><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>        
-        <li ><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div id="wrap">
+   <div id="wrap">
       <div class="container">
-      <div class="row">
-      <div class="col-md-2"></div>
-
-        <div class="col-md-8">
-            {% block content %}
-            {% endblock content %}
-        </div>
-      <div class="col-md-2"></div>
+        <div class="row">
+          <div class="col-md-8">
+              {% block content %}
+              {% endblock content %}
+          </div>
         </div>
       </div>
-            <div class="push"></div>
+      <div class="push"></div>
     </div>
-     <div id="footer" class="footer  page-footer #212121 center-on-small-only" style="background: #212121">
+     <div id="footer" class="footer  page-footer #212121 center-on-small-only" style="background: #212121; margin-left:200px;">
        <div class="container-fluid">
               <div class="row">
                   <div class="col-md-6">

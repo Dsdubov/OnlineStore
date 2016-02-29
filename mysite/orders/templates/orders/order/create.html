@@ -1,7 +1,6 @@
 {% extends "bikeshop/base.html" %}
 
 {% block content %}
-<div class="container">
     <div class="row card">
               <label class="col-md-4"></label>
               <div class="col-md-4">
@@ -37,7 +36,7 @@
             {{ field.help_text }}
             <div class="row">
                 <div class="input-field col-md-4">
-                  <label class="col-md-4" id="{{ field.auto_id }}">{{ field.label }}</label>
+                  <label class="col-md-6" id="{{ field.auto_id }}">{{ field.label }}</label>
                   {{ field }}
                 </div>
             </div>
@@ -57,6 +56,5 @@
   </div>
     <br>
     </div>
-</div>
 {% endblock %}
 
