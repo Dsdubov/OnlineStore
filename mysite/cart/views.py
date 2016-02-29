@@ -16,7 +16,6 @@ def cart_add(request, product_id):
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    # return redirect(request.path)
 
 def cart_remove(request, product_id):
     cart = Cart(request)

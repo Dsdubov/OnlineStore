@@ -1,66 +1,13 @@
-{% extends 'bikeshop/base.html' %}
+{% extends "bikeshop/base.html" %}
 {% load staticfiles %}
+
 {% block content %}
-
-        <!-- Modal -->
-        <div class="modal fade" id="cart-modal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content modal-cart">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Cart</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <ul class="collection">
-                        {% for item in cart %}
-                            {% with product=item.product %}
-                                <li class="collection-item">
-                                    <div>
-                                        <p><span class="quantity"> {{ item.quantity }}x</span> {{ product.name }} <span class="label green">${{ item.total_price }}</span>
-                                        <a type="button" href="{% url "cart:cart_remove" product.id %}" class="secondary-content">
-                                        <i class="material-icons">close</i></a></p>
-                                    </div>
-                                </li>
-                            {% endwith %}
-                        {% endfor %}
-                        <a type="button" href="{% url "orders:order_create" %}" class="btn btn-success btn-block btn-primary waves-effect waves-light">Checkout</a>
-                        <div class="cartPageLink">
-                            <a href="/cart">
-                                <p>Go to cart page</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- Modal -->
-
-<div class="container">
-    <div class="well well-sm">
-       <a id="" class="btn btn-default btn-sm" href="javascript:history.go(-1);"><span class="glyphicon">Back</span></a>
-        <strong>{{ catalog }}/{{ category }}/Products</strong>
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
-        <span class="text-right">
-        <!--Trigger button-->
-            <a class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#cart-modal"><i class="material-icons">shopping_cart</i> <span>Cart</span> </a><span class="badge social-counter">{{ cart.len }}</span>
-        <!--Trigger button-->
-        </span>
-    </div>
-    <div id="products" class="row list-group">
-        {% for product in products %}
-
-        <!-- Modal: QUick look -->
+    <h1>Your wishlist</h1>
+    <table class="cart">
+        <tbody>
+        {% for item in wishlist %}
+            {% with product=item.product %}
+                    <!-- Modal: QUick look -->
         <div class="modal fade" id="{{product.id}}" role="dialog">
             <div class="modal-dialog modal-qlook">
 
@@ -191,7 +138,8 @@
                 </div>
             </div>
         </div>
+            {% endwith %}
         {% endfor %}
-    </div>
-</div>
-{% endblock content %}
+        </tbody>
+    </table>
+{% endblock %}

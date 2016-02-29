@@ -4,7 +4,6 @@ from bikeshop.models import Product
 
 
 class Cart(object):
-
     def __init__(self, request):
         """
         Initialize the cart.

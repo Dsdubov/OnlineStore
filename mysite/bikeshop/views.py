@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
 
+from wishlist.models import Wishlist
+
 def start(request):
     return render(request, 'bikeshop/start.html')
     
@@ -25,6 +27,7 @@ def product_details(request, product_name):
     return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form})
 
 def product_list(request, category_name):
+    wishlist = Wishlist(request).get_product_ids()
     cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
     catalog = CatalogCategory.objects.get(name=category_name)

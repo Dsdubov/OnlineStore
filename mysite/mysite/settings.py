@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'bikeshop',
     'orders',
     'cart',
+    'wishlist',
     'fun_templates'
 )
 
@@ -111,6 +112,9 @@ MEDIA_URL = 'bikeshop/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'bikeshop/static')
 
 CART_SESSION_ID = 'cart'
+
+WISHLIST_SESSION_ID = 'wishlist'
+
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
