@@ -170,31 +170,42 @@
         </div>
         <!--/.Modal: QUick look -->
 
-        <div class="item  col-xs-4">
+        <div class="item  col-md-3">
             <div class="thumbnail card card-product hoverable">
-                <img class="group list-group-image" src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 100px; height: 100px;">
+            <div class="row">
+                <div class="col-md-4 text left">
+                    <div class="bold-700">
+                        ${{ product.price_in_dollars }}
+                    </div>
+                </div>
+                <div class="col-md-8 text-right">
+                    {% if product.quantity > 0 %}
+                    <div class="bold-70 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
+                    {% else %}
+                    <div class="bold-70 " style="color: #ff4444">Not in Stock</div>
+                    {% endif %}        
+                </div>                
+            </div>
+
+                <img class="group list-group-image" src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
                 <div class="caption">
-                    <h4 class="group inner list-group-item-heading text-center"> <a href="{{request.path|urlencode}}{{ product.name }}/details/">{{ product.name }}</a></h4>
                     <div class="row">
-                        <div class="text-center">
+                        <div class="col-md-12 text-left" >
+                            <a class="group inner list-group-item-heading text-center" href="{{request.path|urlencode}}{{ product.name }}/details/" style="color: black">{{ product.name }}</a>
+                        </div>
+
+                    </div>
+                    <div class="row">                        
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-info btn-xs waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
                             {% if product.id in wishlist %}
-                            <a type="button" class="btn-floating btn-small waves-effect waves-light red darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                            <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>
                             {% else %}
-                            <a type="button" class="btn-floating btn-small waves-effect waves-light blue darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                            <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" >favorite</i></a>
                             {% endif %}
-                        </div>
-                        <div class="text-center">                            
-                            <a href="#" class="btn btn-default btn-sm waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
-                            <!--/.Activation Button-->
-                        </div>
-                        <div class="text-center">
-                            <p class="lead">${{ product.price_in_dollars }}</p>
-                            {% if product.quantity > 0 %}
-                            <div class="bold-700 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
-                            {% else %}
-                            <div class="bold-700 " style="color: #ff4444">Not in Stock</div>
-                            {% endif %}
-                        <!-- <div class="col-xs-12 col-md-6 text-center"> -->
                         </div>
                     </div>
                 </div>

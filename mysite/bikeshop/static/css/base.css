@@ -7,10 +7,6 @@ html, body {
   /*padding-top: 0px;*/
   font-family: 'Varela Round';
 }
-html,body
-{
-height:100%;
-}
 
 #wrap
 {
@@ -79,7 +75,6 @@ a, p, h, h1, h2, h3, h4, div, button {
     -webkit-border-radius: 10px;
     -moz-border-radius: 0px;
     border-radius: 0px;
-    /*background: #DC143C;*/
 }
 
 .item.list-group-item
