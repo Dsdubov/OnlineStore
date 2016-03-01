@@ -2,6 +2,7 @@
 html, body {
   position: relative;
   height: 100%;
+  width: 100%;
   background: #efefef;
   /*padding-top: 0px;*/
   font-family: 'Varela Round';
@@ -175,6 +176,9 @@ image-circle
 /**************
 Side bar
 **************/
+
+
+
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
