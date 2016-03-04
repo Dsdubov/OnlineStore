@@ -39,7 +39,6 @@ Product box
 Static to fixed navbar
 ****************************/
 
-
 // function FixedTopMenuOnScroll() {
 //     var winHeight = $(".site-header").height();//any image,logo or header above menu
 //     winHeight = winHeight - $('.navbar').height();
@@ -73,9 +72,13 @@ $(document).ready(function () {
         overlay.hide();
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
+        $('#header').animate({'marginLeft' : 220});
+        // document.getElementById("header").style.marginLeft = 0;
         isClosed = false;
       } else {   
         overlay.show();
+        // document.getElementById("header").style.marginLeft = 220;
+        $('#header').animate({'marginLeft' : 0}, 'fast');
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         isClosed = true;
