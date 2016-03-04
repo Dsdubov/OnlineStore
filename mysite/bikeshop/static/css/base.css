@@ -169,7 +169,7 @@ image-circle
     max-width: 100%;
 }
 
-@media (min-width: 728px) {
+@media (min-width: 768px) {
   #header {
     margin-left: 220px
   }
