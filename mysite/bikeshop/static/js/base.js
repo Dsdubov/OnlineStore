@@ -1,10 +1,10 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-// $(document).ready(function() {
-//   if (document.documentElement.clientWidth <= 768) {
-//     $('#wrapper').removeClass('toggled');
-//   }
-// });
+$(document).ready(function() {
+  if (document.documentElement.clientWidth <= 768) {
+    $('#wrapper').removeClass('toggled');
+  }
+});
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -52,13 +52,11 @@ $(document).ready(function () {
         overlay.hide();
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
-        $('#header').animate({'marginLeft' : 220});
-        // document.getElementById("header").style.marginLeft = 0;
+        $('#header').animate({'marginLeft' : 220}, {'duration' : 500});
         isClosed = false;
       } else {   
         overlay.show();
-        // document.getElementById("header").style.marginLeft = 220;
-        $('#header').animate({'marginLeft' : 0}, 'fast');
+        $('#header').animate({'marginLeft' : 0}, {'duration' : 500});
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         isClosed = true;
