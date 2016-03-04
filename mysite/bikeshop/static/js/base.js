@@ -1,5 +1,11 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+$(document).ready(function() {
+  if (document.documentElement.clientWidth < 728) {
+    $('#wrapper').removeClass('toggled');
+  }
+});
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -30,32 +36,6 @@ $(document).ready(function() {
 Product box
 *********************/
 
-
-// function goBack() {
-//     window.history.back();
-// }
-
-/****************************
-Static to fixed navbar
-****************************/
-
-// function FixedTopMenuOnScroll() {
-//     var winHeight = $(".site-header").height();//any image,logo or header above menu
-//     winHeight = winHeight - $('.navbar').height();
-//     function checkMenuOnTop() {
-//         if ($(window).scrollTop() > winHeight) {
-//             $('.navbar').addClass("navbar-fixed-top");
-//         }
-//         else {
-//             $('.navbar').removeClass("navbar-fixed-top");
-//         }
-//     }
-//     checkMenuOnTop();
-//     $(window).scroll(function () {
-//         checkMenuOnTop();
-//     });
-//   }
-//   FixedTopMenuOnScroll();
 
 $(document).ready(function () {
   var trigger = $('.hamburger'),
@@ -89,3 +69,4 @@ $(document).ready(function () {
         $('#wrapper').toggleClass('toggled');
   });  
 });
+
