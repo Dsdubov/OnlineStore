@@ -1,10 +1,10 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-$(document).ready(function() {
-  if (document.documentElement.clientWidth <= 768) {
-    $('#wrapper').removeClass('toggled');
-  }
-});
+// $(document).ready(function() {
+//   if (document.documentElement.clientWidth <= 768) {
+//     $('#wrapper').removeClass('toggled');
+//   }
+// });
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
