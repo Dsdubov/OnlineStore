@@ -1,7 +1,6 @@
 {% extends 'bikeshop/base.html' %}
 {% load staticfiles %}
 {% block content %}
-<!-- <div class="container"> -->
     <div class="well well-sm">
         <ol class="breadcrumb">
         <a id="" class="btn btn-default btn-sm" href="javascript:history.go(-1);"><span class="glyphicon">Back</span></a>
@@ -13,7 +12,6 @@
                 class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
         </ol>
-        <!-- <strong>{{ catalog }}/Categories</strong> -->
     </div>
     <div id="products" class="list-group">
         {% for category in categories %}
@@ -33,5 +31,4 @@
         </div>
         {% endfor %}
     </div>
-<!-- </div> -->
 {% endblock content %}
