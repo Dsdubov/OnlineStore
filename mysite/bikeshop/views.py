@@ -9,6 +9,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 from wishlist.models import Wishlist
 
@@ -74,6 +76,12 @@ def register(request):
             user.save()
             # Update our variable to tell the template registration was successful.
             registered = True
+            subject = 'Registration'
+            mail = user.email
+            message = 'Dear {},\nThank you for registration on buybike.pythonanywhere.com!.'.format(user.username)
+            mail_sent = EmailMessage(subject, message, to=[mail,])
+            mail_sent.send()
+
 
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.

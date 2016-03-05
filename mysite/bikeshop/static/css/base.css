@@ -3,8 +3,7 @@ html, body {
   position: relative;
   height: 100%;
   width: 100%;
-  background: #efefef;
-  /*padding-top: 0px;*/
+  background: white;
   font-family: 'Varela Round';
 }
 
@@ -17,7 +16,7 @@ html, body {
   padding-bottom:120px; /* this needs to be bigger than footer height*/
 }
 
-.footer .push {
+.push {
     height: 120px; /* .push must be the same height as .footer */
 }
 
@@ -28,7 +27,7 @@ margin-top: -120px; /* negative value of footer height */
 clear:both;
 padding-top:20px;
 color:#fff;
-background: #0099CC;
+background: #90a4ae;
 }
 
 a {
@@ -195,7 +194,7 @@ image-circle
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #1a1a1a;
+    background: #546e7a;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -253,7 +252,6 @@ image-circle
       -moz-transition:  width .2s ease-in;
        -ms-transition:  width .2s ease-in;
             transition: width .2s ease-in;
-
 }
 .sidebar-nav li:first-child a {
     color: #fff;

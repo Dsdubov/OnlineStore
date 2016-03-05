@@ -1,10 +1,5 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-$(document).ready(function() {
-  if (document.documentElement.clientWidth <= 768) {
-    $('#wrapper').removeClass('toggled');
-  }
-});
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -40,7 +35,8 @@ Product box
 $(document).ready(function () {
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
-     isClosed = false;
+      leftBlock = $('.left-block'),
+     isClosed = true;
 
     trigger.click(function () {
       hamburger_cross();      
@@ -50,13 +46,17 @@ $(document).ready(function () {
 
       if (isClosed == true) {          
         overlay.hide();
+        leftBlock.show();
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
         $('#header').animate({'marginLeft' : 220}, {'duration' : 500});
+        // $('#wrap').animate({'marginLeft' : 0}, {'duration' : 100});
         isClosed = false;
       } else {   
         overlay.show();
+        leftBlock.hide();
         $('#header').animate({'marginLeft' : 0}, {'duration' : 500});
+        // $('#wrap').animate({'marginLeft' : 220}, {'duration' : 100});
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         isClosed = true;

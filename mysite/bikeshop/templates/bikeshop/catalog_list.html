@@ -17,11 +17,10 @@
         {% for catalog in catalogs %}
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail card card-product hoverable">
-                <img class="group list-group-image" src="{% if catalog.photo %}{% static catalog.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:400px;
-height:250px;">
-                <div class="caption">
+                <img class="group list-group-image" src="{% if catalog.photo %}{% static catalog.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:200px; height:200px;">
+                <div class="caption text-center">
                     <h4 class="group inner list-group-item-heading"><a href="/catalog/{{ catalog.name }}/categories">{{ catalog.name }}</a></h4>
-                    <p class="group inner list-group-item-text">{{ catalog.description }}</p>
+                    <!-- <p class="group inner list-group-item-text">{{ catalog.description }}</p> -->
                     <div class="row">
                         <div class="col-xs-12 col-md-6"></div>
                         <div class="col-md-6"></div>
