@@ -7,28 +7,64 @@ html, body {
   font-family: 'Varela Round';
 }
 
-#wrap
-{
-  margin-top: 100px;
-  /*margin-left:200px;*/
-  min-height: 100%;
-  overflow:auto;
-  padding-bottom:120px; /* this needs to be bigger than footer height*/
+
+@media (min-width: 768px) {
+  #header {
+    margin-left: 220px
+  }
 }
 
-.push {
-    height: 120px; /* .push must be the same height as .footer */
+#wrapper {
+    margin-top: 100px;
+    min-height: 100%;
+    padding-bottom: -120px;
+    overflow:auto;
+    position: relative;
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 .footer
 {
+height: 108px; 
 position: relative;
-margin-top: -120px; /* negative value of footer height */
+
 clear:both;
-padding-top:20px;
+
 color:#fff;
 background: #90a4ae;
 }
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #546e7a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
 
 a {
   color: #aaaaaa;
@@ -168,57 +204,6 @@ image-circle
     max-width: 100%;
 }
 
-@media (min-width: 768px) {
-  #header {
-    margin-left: 220px
-  }
-}
-
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#wrapper.toggled {
-    padding-left: 220px;
-}
-
-#sidebar-wrapper {
-    z-index: 1000;
-    left: 220px;
-    width: 0;
-    height: 100%;
-    margin-left: -220px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: #546e7a;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#sidebar-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 220px;
-}
-
-#page-content-wrapper {
-    width: 100%;
-    padding-top: 70px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -220px;
-}
-
 /*-------------------------------*/
 /*     Sidebar nav styles        */
 /*-------------------------------*/
@@ -253,9 +238,9 @@ image-circle
        -ms-transition:  width .2s ease-in;
             transition: width .2s ease-in;
 }
-.sidebar-nav li:first-child a {
+.sidebar-nav li:first-child:before {
     color: #fff;
-    background-color: #1a1a1a;
+    background-color: red;
 }
 .sidebar-nav li:nth-child(2):before {
     background-color: #ec1b5a;   

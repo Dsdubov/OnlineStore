@@ -21,145 +21,135 @@
 
 </head>
   <body bgcolor="#E6E6FA">
-<div id="page-content-wrapper">
 
-<div id="wrapper" class="toggled">
-    <!-- <div class="overlay"></div> -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" style="margin-top: 0px">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand" >
-                    <a href="/">
-                       Brand
-                    </a>
-                </li>
-                <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                      <li class="dropdown-header">Catalogs</li>
-                        <li><a href="/catalog/Bikes/categories">Bikes</a></li>
-                        <li><a href="/catalog/Bike Parts/categories">Bike parts</a></li>
-                        <li><a href="/catalog/Bike Accessories/categories">Accessories</a></li>
-                        <li><a href="/catalog/Bike clothing/categories">Bike clothing</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Actions</li>
-                        <li><a href="/orders/status">Check order status</a></li>
-                        <li><a href="/cart">Cart</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/login">Logout</a></li>
-                        <li><a href="/register">Register</a></li>
+      <div id="wrapper" class="toggled">
+          <!-- <div class="overlay"></div> -->
+              <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" style="margin-top: 0px">
+                  <ul class="nav sidebar-nav">
+                      <li class="" >
+                          <a href="/">
+                             Brand
+                          </a>
+                      </li>
+                      <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">Catalogs</li>
+                              <li><a href="/catalog/Bikes/categories">Bikes</a></li>
+                              <li><a href="/catalog/Bike Parts/categories">Parts</a></li>
+                              <li><a href="/catalog/Bike Accessories/categories">Accessories</a></li>
+                              <li><a href="/catalog/Bike clothing/categories">Clothing</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li class="dropdown-header">Actions</li>
+                              <li><a href="/orders/status">Check order status</a></li>
+                              <li><a href="/cart">Cart</a></li>
+                              <li><a href="/login">Login</a></li>
+                              <li><a href="/login">Logout</a></li>
+                              <li><a href="/register">Register</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                          <a href="/">Home</a>
+                      </li>
+                      <li>
+                          <a href="#">About</a>
+                      </li>
+                      <li>
+                          <a href="#">Events</a>
+                      </li>
+                      <li>
+                          <a href="#">Team</a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li class="dropdown-header">Dropdown heading</li>
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                          <a href="#">Services</a>
+                      </li>
+                      <li>
+                          <a href="#">Contact</a>
+                      </li>
                   </ul>
-                </li>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">Team</a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+              </nav>
+
+                     <!--Navigation-->
+        <nav class="navbar navbar-default navbar-fixed-top z-depth-1" role="navigation" style="background: #263238;" id="header">
+              <div class="container-fluid">
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button><!-- 
+                      <button type="button" class="hamburger is-closed btn btn-info btn-sm" data-toggle="offcanvas">
+                      <i class="material-icons">menu</i>
+                      </button> -->
+                  </div>
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group waves-effect waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <button type="submit" class="btn btn-primary" style="background: none">Submit</button>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="/cart" class="navbar-brand waves-effect waves-light"><i class="material-icons">shopping_cart</i>Cart</a></li>
+                      {% if user.is_authenticated %}
+                      <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons" style="color: #ff4444">favorite</i></a></li>
+                      {% else %}
+                      <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons">favorite</i></a></li>
+                      {% endif %}
+                      {% if user.is_authenticated %}
+                      <li><a href="/logout" class="navbar-brand waves-effect waves-light">Logout</a></li>
+                      {% else %}
+                      <li><a href="/login" class="navbar-brand waves-effect waves-light"><i class="material-icons">account_circle</i>Login</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+              </div>
         </nav>
 
-               <!--Navigation-->
-  <nav class="navbar navbar-default navbar-fixed-top z-depth-1" role="navigation" style="background: #263238;" id="header">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button><!-- 
-                <button type="button" class="hamburger is-closed btn btn-info btn-sm" data-toggle="offcanvas">
-                <i class="material-icons">menu</i>
-                </button> -->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-10">
+                  {% block content %}
+                  {% endblock content %}
+              </div>
+              <div class="col-md-2 text-center">Somethin right
+              </div>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-              <form class="navbar-form navbar-left" role="search">
-                  <div class="form-group waves-effect waves-light">
-                      <input type="text" class="form-control" placeholder="Search">
-                      <button type="submit" class="btn btn-primary" style="background: none">Submit</button>
-                  </div>
-              </form>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="/cart" class="navbar-brand waves-effect waves-light"><i class="material-icons">shopping_cart</i>Cart</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons" style="color: #ff4444">favorite</i></a></li>
-                {% else %}
-                <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons">favorite</i></a></li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <li><a href="/logout" class="navbar-brand waves-effect waves-light">Logout</a></li>
-                {% else %}
-                <li><a href="/login" class="navbar-brand waves-effect waves-light"><i class="material-icons">account_circle</i>Login</a></li>
-                {% endif %}
-              </ul>
-            </div>
-        </div>
-  </nav>
-
-
-  <div id="wrap">
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-10">
-              {% block content %}
-              {% endblock content %}
           </div>
-          <div class="col-md-2 text-center">
-
-
-          
-          </div>
-        </div>
       </div>
-  </div>
-      <div class="push"></div>
-     <div id="footer" class="footer  page-footer center-on-small-only">
-       <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-6">
-                      <h5 class="white-text"></h5>
-                      <p class="grey-text text-lighten-4">Footer</p>
-                  </div>
-                  <div class="col-md-6">
-                      <h5 class="white-text">Contacts</h5>
-                      <ul>
-                          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                      </ul>
+      <div id="footer" class="footer  page-footer center-on-small-only">
+           <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <h5 class="white-text"></h5>
+                          <p class="grey-text text-lighten-4">Footer</p>
+                      </div>
+                      <div class="col-md-6">
+                          <h5 class="white-text">Contacts</h5>
+                          <ul>
+                              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                          </ul>
+                      </div>
                   </div>
               </div>
-          </div>
-          <div class="footer-copyright text-center rgba-black-light">
-              <div class="container-fluid">
-                  <i class="material-icons">copyright</i> 2015 Copyright: <a href="http://buybike.pythonanywhere.com"> Dubov Dmitry </a>
-              </div>
-          </div>    
-      </div>
-    </div>
-</div>
+              <div class="footer-copyright text-center rgba-black-light">
+                  <div class="container-fluid">
+                      <i class="material-icons">copyright</i> 2015 Copyright: <a href="http://buybike.pythonanywhere.com"> Dubov Dmitry </a>
+                  </div>
+              </div>    
+        </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

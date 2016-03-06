@@ -29,7 +29,6 @@ def product_details(request, product_name):
     return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form})
 
 def product_list(request, category_name):
-    wishlist = Wishlist(request).get_product_ids()
     cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
     catalog = CatalogCategory.objects.get(name=category_name)
