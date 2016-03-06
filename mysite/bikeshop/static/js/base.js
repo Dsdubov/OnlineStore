@@ -1,6 +1,3 @@
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -31,25 +28,19 @@ $(document).ready(function() {
 Product box
 *********************/
 
-$(document).ready(function() {
-  if (window.screen.width < 768) {
-    $('[data-toggle="offcanvas"]').click(function () {
-        $('#wrapper').removeClass('toggled');
-  });  
-  }
-}
-
-
 $(document).ready(function () {
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
       leftBlock = $('.left-block'),
      isClosed = true;
-
+     if (document.documentElement.clientWidth < 768) {
+      trigger.show();
+      $('#wrapper').removeClass('toggled');
+      $('#header').css({'marginLeft' : 0});
+    }
     trigger.click(function () {
       hamburger_cross();      
     });
-
     function hamburger_cross() {
 
       if (isClosed == true) {          
@@ -75,4 +66,3 @@ $(document).ready(function () {
         $('#wrapper').toggleClass('toggled');
   });  
 });
-

@@ -17,7 +17,7 @@ html, body {
 #wrapper {
     margin-top: 100px;
     min-height: 100%;
-    padding-bottom: -120px;
+    padding-bottom: -140px;
     overflow:auto;
     position: relative;
     padding-left: 0;
@@ -31,11 +31,9 @@ html, body {
 {
 height: 108px; 
 position: relative;
-
 clear:both;
-
-color:#fff;
-background: #90a4ae;
+color: #1C2331;
+background: #e0e0e0;
 }
 
 #wrapper.toggled {
@@ -64,7 +62,6 @@ background: #90a4ae;
 #wrapper.toggled #sidebar-wrapper {
     width: 220px;
 }
-
 
 a {
   color: #aaaaaa;
@@ -106,9 +103,9 @@ a, p, h, h1, h2, h3, h4, div, button {
 .glyphicon { margin-right:5px; }
 .thumbnail
 {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     padding: 0px;
-    -webkit-border-radius: 10px;
+    -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
@@ -118,11 +115,13 @@ a, p, h, h1, h2, h3, h4, div, button {
     float: none;
     width: 100%;
     background-color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+
+    border: none;
 }
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+.item.list-group-item:nth-of-type(even):hover,.item.list-group-item:hover
 {
-    background: #DC143C;
+    border: none;
 }
 
 .item.list-group-item .list-group-image
@@ -131,15 +130,15 @@ a, p, h, h1, h2, h3, h4, div, button {
 }
 .item.list-group-item .thumbnail
 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 .item.list-group-item .caption
 {
-    padding: 9px 9px 0px 9px;
+    padding: 0px 0px 0px 0px;
 }
 .item.list-group-item:nth-of-type(odd)
 {
-    background: #eeeeee;
+    border: none
 }
 
 .item.list-group-item:before, .item.list-group-item:after
@@ -238,10 +237,11 @@ image-circle
        -ms-transition:  width .2s ease-in;
             transition: width .2s ease-in;
 }
-.sidebar-nav li:first-child:before {
+/*.sidebar-nav li:first-child {
+    min-height: 40px;
     color: #fff;
     background-color: red;
-}
+}*/
 .sidebar-nav li:nth-child(2):before {
     background-color: #ec1b5a;   
 }
