@@ -31,6 +31,14 @@ $(document).ready(function() {
 Product box
 *********************/
 
+$(document).ready(function() {
+  if (window.screen.width < 768) {
+    $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').removeClass('toggled');
+  });  
+  }
+}
+
 
 $(document).ready(function () {
   var trigger = $('.hamburger'),
