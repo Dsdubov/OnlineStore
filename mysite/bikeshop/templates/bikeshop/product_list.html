@@ -148,7 +148,7 @@
                                         <h5>Short description</h5>
                                         <hr>{{ product.description }}<br>
                                         <div class="text-center">
-                                            <a class="btn btn-default btn-lg waves-effect waves-light" href="{{request.path|urlencode}}{{ product.name }}/details/">Details</a>
+                                            <a class="btn btn-default btn-lg waves-effect waves-light" href="{% if product.details.all.exists %}{{request.path|urlencode}}{{ product.name }}/details/{% else %}#{%endif%}">Details</a>
                                         </div>
                                     </div>
                                     <!--/.Third column: product description-->
@@ -169,7 +169,7 @@
         </div>
         <!--/.Modal: QUick look -->
 
-        <div class="item  col-md-3">
+        <div class="item col-xs-12 col-md-3">
             <div class="thumbnail card card-product hoverable">
 
                 <img class="group list-group-image" src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
@@ -190,7 +190,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-left" >
-                            <a class="group inner list-group-item-heading text-center" href="{{request.path|urlencode}}{{ product.name }}/details/">{{ product.name }}</a>
+                            <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{{request.path|urlencode}}{{ product.name }}/details/{% else %}#{%endif%}">{{ product.name }}</a>
                         </div>
 
                     </div>

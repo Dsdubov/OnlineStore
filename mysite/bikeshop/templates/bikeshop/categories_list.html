@@ -15,7 +15,7 @@
     </div>
     <div id="products" class="list-group">
         {% for category in categories %}
-        <div class="item  col-xs-2 col-lg-2">
+        <div class="item  col-xs-6 col-lg-2">
             <div class="thumbnail card card-product hoverable">
                 <img class="group list-group-image" src="{% if category.photo %}{% static category.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:100px; height:100px;">
                 <div class="caption" style="height: 50; text-align: center">
