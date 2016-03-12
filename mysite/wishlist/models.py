@@ -45,19 +45,15 @@ class Wishlist(object):
         else:
             del self.wishlist[product_id]
         self.save()
-        print(self.wishlist)
 
 
     def save(self):
-        # update the session wishlist
         self.session[settings.WISHLIST_SESSION_ID] = self.wishlist
-        # mark the session as "modified" to make sure it is saved
-        self.session.modified = True
+        # self.session.modified = True
 
     def clear(self):
-        # empty wishlist
         self.session[settings.WISHLIST_SESSION_ID] = {}
-        self.session.modified = True
+        # self.session.modified = True
         
     def get_product_ids(self):
         return self.wishlist.keys()

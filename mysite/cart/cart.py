@@ -48,7 +48,11 @@ class Cart(object):
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
-        self.save()
+        if self.cart[product_id]['quantity'] <= product.quantity:
+            self.save()
+            return True
+        else:
+            return False
 
     def remove(self, product):
         """
@@ -60,13 +64,10 @@ class Cart(object):
             self.save()
 
     def save(self):
-        # update the session cart
         self.session[settings.CART_SESSION_ID] = self.cart
-        # mark the session as "modified" to make sure it is saved
         self.session.modified = True
 
     def clear(self):
-        # empty cart
         self.session[settings.CART_SESSION_ID] = {}
         self.session.modified = True
 

@@ -4,12 +4,15 @@
 <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
 
 <div class="container-fluid">
-                    <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
-    <div class="content-wrapper">   
+    <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+    <div class="content-wrapper">  
         <div class="item-container">    
-            <div class="container"> 
-                <div class="col-md-12">
-                    <div class="product col-md-3 service-image-left">
+            <div class="container-fluid">
+            <strong><div class="product-title">{{ product.product }}</div></strong>
+            <hr>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="product col-md-12 service-image-left">
                         <center>
                             {% if product.product.photo %}
                                 <img class="group list-group-image" src="{% static product.product.photo %}" alt=""></img>
@@ -17,7 +20,7 @@
                         </center>
                     </div>
                     
-                    <div class="container service1-items col-sm-2 col-md-2 pull-left">
+<!--                     <div class="container service1-items col-sm-2 col-md-2 pull-down">
                         <center>
                             <a id="item-1" class="service1-item">
                                 {% if product.product.photo %}
@@ -35,73 +38,76 @@
                                 {% endif %}
                             </a>
                         </center>
+                        </div> -->
                     </div>
-                </div>
-                    
-                <div class="col-md-7">
-                    <div class="product-title">{{ product.product }}</div>
-                    <div class="product-desc">{{ product.description }}</div>
-                    <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
-                    <hr>
-                    <div class="product-price">$ {{ product.product.price_in_dollars }}</div>
-                    {% if product.id in wishlist %}
-                    <a type="button" class="btn-floating btn-small waves-effect waves-light red darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
-                    {% else %}
-                    <a type="button" class="btn-floating btn-small waves-effect waves-light blue darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
-                    {% endif %}
-                    {% if product.product.quantity > 0 %}
-                    <div class="product-stock">In Stock: {{ product.product.quantity }}</div>
-                    {% else %}
-                    <div class="product-stock" style="color: red">Not in Stock</div>
-                    {% endif %}
-                    <hr>
-                    <div class="col-md-3">
-                            <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                <div class="row">
-                                    <div class="input-field">
-                                      <label id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
-                                      {{ cart_product_form.quantity }}
-                                    </div>
+                    <div class="col-md-3 card">
+                        <div class="row text-center">
+                            <div class="product-price">$ {{ product.product.price_in_dollars }}</div>
+                        </div>
+                        <div class="row text-center">
+                            {% if product.product.quantity > 0 %}
+                            <div class="product-stock">In Stock: {{ product.product.quantity }}</div>
+                            {% else %}
+                            <div class="product-stock" style="color: red">Not in Stock</div>
+                            {% endif %}
+                        </div>
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            <div class="row text-center" style="margin: 2">
+                                <div class="input-field">
+                                  <label id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
+                                  {{ cart_product_form.quantity }}
                                 </div>
+                            </div>
+                            <div class="row text-center" style="margin: 2">
                                 {% csrf_token %}
-                                </br>
                                 <button type="submit" class="btn btn-success waves-effect waves-light">
                                     <i class="material-icons">add_shopping_cart<h>Add</h></i>
                                 </button>
-                            </form>
+                            </div>
+                        </form>
+                        <div class="row text-center">
+                            {% if product.product.id in wishlist_ids %}
+                            <a type="button" class="btn-floating btn-small waves-effect waves-light btn-danger darken-4" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                            {% else %}
+                            <a type="button" class="btn-floating btn-small waves-effect waves-light btn-primary darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                            {% endif %}
+                        </d iv>
                     </div>
                 </div>
             </div> 
+                    
+                
+            </div> 
         </div>
-        <div class="container-fluid">       
-            <div class="col-md-12 product-info">
-                    <ul id="myTab" class="nav nav-tabs nav_tabs">
-                        
-                        <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-                        <li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li>
-                        <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
-                        
-                    </ul>
-                <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade in active" id="service-one">
-                         
-                            <section class="container product-info">
-                                {{ product.description }}
+        <div class="row">
+            <div class="container-fluid">       
+                <div class="col-md-12 product-info">
+                        <ul id="myTab" class="nav nav-tabs nav_tabs">
+                            
+                            <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+                            <li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li>
+                            <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
+                            
+                        </ul>
+                    <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade in active" id="service-one">
+                             
+                                <section class="container product-info">
+                                    {{ product.description }}
+                                </section>
+                                              
+                            </div>
+                        <div class="tab-pane fade" id="service-two">
+                            
+                            <section class="container">
                             </section>
-                                          
+                            
                         </div>
-                    <div class="tab-pane fade" id="service-two">
-                        
-                        <section class="container">
-                                {{ product.description }}
-                        </section>
-                        
+                        <div class="tab-pane fade" id="service-three">
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="service-three">
-                            {{ product.description }}           
-                    </div>
+                    <hr>
                 </div>
-                <hr>
             </div>
         </div>
     </div>
