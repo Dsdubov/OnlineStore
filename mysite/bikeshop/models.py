@@ -15,6 +15,17 @@ class Catalog(models.Model):
     def __str__(self):
         return self.name
 
+
+class CatalogCategory(models.Model):        
+   catalog = models.ForeignKey('Catalog', related_name='categories')
+   parent = models.ForeignKey('self', blank=True, null=True, related_name='children')        
+   name = models.CharField(max_length=300)
+   slug =  models.SlugField(max_length=150)
+   description = models.TextField(blank=True)
+   photo = models.FileField(upload_to='bikeshop/media/category_photo', blank=True)
+   def __str__(self):
+        return self.name
+
 class Product(models.Model):
     category = models.ForeignKey('CatalogCategory', related_name='products')
     name = models.CharField(max_length=300)
@@ -25,16 +36,6 @@ class Product(models.Model):
     price_in_dollars = models.DecimalField(max_digits=6, decimal_places=2)
     quantity = models.IntegerField(default=0)
     def __str__(self):
-        return self.name
-
-class CatalogCategory(models.Model):        
-   catalog = models.ForeignKey('Catalog', related_name='categories')
-   parent = models.ForeignKey('self', blank=True, null=True, related_name='children')        
-   name = models.CharField(max_length=300)
-   slug =  models.SlugField(max_length=150)
-   description = models.TextField(blank=True)
-   photo = models.FileField(upload_to='bikeshop/media/category_photo', blank=True)
-   def __str__(self):
         return self.name
 
 class ProductDetail(models.Model):

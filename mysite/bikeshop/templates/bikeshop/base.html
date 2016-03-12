@@ -14,8 +14,8 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://mdbootstrap.com/mdbcdn/mdb.min.css" rel="stylesheet">   
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
 
 
@@ -93,9 +93,9 @@
                       </button>
                   </div>
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                    <form class="navbar-form navbar-left" role="search">
+                    <form class="navbar-form navbar-left" role="search" id="search" action="{% url "bikeshop:search" %}" method="get">
                         <div class="form-group waves-effect waves-light">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="search" name="q">
                             <button type="submit" class="btn btn-primary" style="background: none">Submit</button>
                         </div>
                     </form>
