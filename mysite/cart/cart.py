@@ -13,6 +13,7 @@ class Cart(object):
         if not cart:
             # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}
+            self.session[settings.CART_SESSION_LEN] = 0
         self.cart = cart
 
     def __len__(self):
@@ -65,10 +66,13 @@ class Cart(object):
 
     def save(self):
         self.session[settings.CART_SESSION_ID] = self.cart
+        self.session[settings.CART_SESSION_LEN] = sum(item['quantity'] for item in self.cart.values())
+        print(self.session[settings.CART_SESSION_LEN])
         self.session.modified = True
 
     def clear(self):
         self.session[settings.CART_SESSION_ID] = {}
+        self.session[settings.CART_SESSION_LEN] = 0
         self.session.modified = True
 
     def get_total_price(self):

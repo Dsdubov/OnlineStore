@@ -112,6 +112,7 @@ MEDIA_URL = 'bikeshop/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'bikeshop/static')
 
 CART_SESSION_ID = 'cart'
+CART_SESSION_LEN = 'cart_len'
 
 WISHLIST_SESSION_ID = 'wishlist'
 

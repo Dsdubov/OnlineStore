@@ -2,6 +2,7 @@ import re
 from .models import *
 from cart.cart import Cart
 from django.db.models import Q
+from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
 from wishlist.models import Wishlist
@@ -33,13 +34,13 @@ def product_details(request, product_name):
     return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form, 'wishlist' : wishlist, 'wishlist_ids' : wishlist_ids})
 
 def product_list(request, category_name):
-    # wishlist = Wishlist(request)
-    # wishlist_ids = [int(x) for x in wishlist.get_product_ids()]
+    wishlist = request.session.get(settings.WISHLIST_SESSION_ID)
+    wishlist_ids = [int(x) for x in wishlist.keys()]
     cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
     category = CatalogCategory.objects.get(name=category_name)
     cart_product_form = CartAddProductForm()
-    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'cart': cart, 'catalog' : category.catalog, 'category' : category})
+    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'cart': cart, 'catalog' : category.catalog, 'category' : category, 'wishlist' : wishlist_ids})
 
 def catalog_list(request):
     catalogs = Catalog.objects.all()

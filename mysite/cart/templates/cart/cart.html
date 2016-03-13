@@ -43,23 +43,23 @@
                                 <div class="col-md-3 text-center">
                                     <h6><strong>${{ item.price }}</strong></h6>
                                 </div>
-                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                        <div class="col-md-2 text-center">
-                                            <div class="row">
-                                                  {{ item.update_quantity_form.quantity }}
-                                                  {{ item.update_quantity_form.update }}
-                                            </div>
-                                                {% csrf_token %}
+                                <form action="{% url "cart:cart_add" product.id %}" method="post" id="add_form" class="add_form">
+                                    <div class="col-md-2 text-center">
+                                        <div class="row">
+                                              {{ item.update_quantity_form.quantity }}
+                                              {{ item.update_quantity_form.update }}
                                         </div>
-                                        <div class="col-md-2 text-center">
-                                            <a>
-                                                <button type="submit" class="btn btn-primary btn-xs  waves-effect waves-light">
-                                                    <i class="material-icons">autorenew</i>
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </form>
-                                <div class="col-md-2 text-center">
+                                            {% csrf_token %}
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <a>
+                                            <button type="submit" class="add btn btn-primary btn-xs  waves-effect waves-light">
+                                                <i class="material-icons">autorenew</i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </form>
+                                <div class="col-md-2 text-center" id="subtotal">
                                     ${{ item.total_price }}
                                 </div> 
                                 <div class="col-md-3 text-right">
@@ -80,7 +80,7 @@
                         <div class="col-md-3 text-left">
                             <a type="button" href="javascript:location.reload(true)"  class="btn btn-info">Update</a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="total">
                             <h4 class="text-right">Total <strong>${{ cart.get_total_price }}</strong>
                             </h4>
                         </div>
@@ -92,4 +92,22 @@
         </div>
     </div>
   </div>
+
+<script>
+$(document).on('submit', '.add_form's, function() {
+    $('#add_form').submit(function() { // catch the form's submit event
+        $.ajax({ // create an AJAX call...
+            data: $(this).serialize(), // get the form data
+            type: $(this).attr('method'), // GET or POST
+            url: $(this).attr('action'), // the file to call
+            success: function(response) { // on success..
+                $(this).html(response);
+                $('#subtotal').html(response)
+                $('#total').html(response)
+            }
+        });
+        return false;
+    });
+});
+</script>
 {% endblock content %}

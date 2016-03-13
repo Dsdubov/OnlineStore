@@ -3,8 +3,7 @@ from django.views.decorators.http import require_POST
 from bikeshop.models import Product
 from .models import Wishlist
 from django.http import HttpResponseRedirect
-
-from cart.cart import Cart
+from django.conf import settings
 
 def wishlist_button(request, product_id):
     wishlist = Wishlist(request)
@@ -14,4 +13,5 @@ def wishlist_button(request, product_id):
 
 def wishlist_detail(request):
     wishlist = Wishlist(request)
-    return render(request, 'wishlist/detail.html', {'wishlist': wishlist})
+    wishlist_ids = [int(x) for x in wishlist.get_product_ids()]
+    return render(request, 'wishlist/detail.html', {'wishlist': wishlist, 'wishlist_ids' : wishlist_ids})
