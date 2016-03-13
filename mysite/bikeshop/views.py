@@ -28,14 +28,20 @@ def pay(request):
 
 def product_details(request, product_name):
     wishlist = Wishlist(request)
-    wishlist_ids = [int(x) for x in wishlist.get_product_ids()]
+    if wishlist:
+        wishlist_ids = [int(x) for x in wishlist.get_product_ids()]
+    else:
+        wishlist_ids = []
     product = ProductDetail.objects.get(product__name=product_name)
     cart_product_form = CartAddProductForm()
     return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form, 'wishlist' : wishlist, 'wishlist_ids' : wishlist_ids})
 
 def product_list(request, category_name):
     wishlist = request.session.get(settings.WISHLIST_SESSION_ID)
-    wishlist_ids = [int(x) for x in wishlist.keys()]
+    if wishlist:
+        wishlist_ids = [int(x) for x in wishlist.keys()]
+    else:
+        wishlist_ids = []
     cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
     category = CatalogCategory.objects.get(name=category_name)

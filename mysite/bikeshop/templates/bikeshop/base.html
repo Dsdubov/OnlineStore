@@ -107,7 +107,7 @@
                       {% endif %}
 
                       {% if request.session.wishlist %}
-                      <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons" style="color: #ff4444">favorite</i></a></li>
+                      <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons" style="color: #ff4444">favorite</i><sup>{{request.session.wishlist|length}}</sup></a></li>
                       {% else %}
                       <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons">favorite</i></a></li>
                       {% endif %}
