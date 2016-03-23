@@ -88,7 +88,7 @@
                                         <h5>Short description</h5>
                                         <hr>{{ product.description }}<br>
                                         <div class="text-center">
-                                            <a class="btn btn-default btn-lg waves-effect waves-light" href="{{request.path|urlencode}}{{ product.name }}/details/">Details</a>
+                                            <a class="btn btn-default btn-lg waves-effect waves-light" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{% endif %}">Details</a>
                                         </div>
                                     </div>
                                     <!--/.Third column: product description-->
@@ -130,7 +130,7 @@
                 <div class="caption">
                     <div class="row">
                         <div class="col-md-12 text-left" >
-                            <a class="group inner list-group-item-heading text-center" href="{{request.path|urlencode}}{{ product.name }}/details/" style="color: black">{{ product.name }}</a>
+                            <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{% endif %}" style="color: black">{{ product.name }}</a>
                         </div>
 
                     </div>

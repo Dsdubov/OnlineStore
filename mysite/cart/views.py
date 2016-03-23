@@ -9,7 +9,7 @@ from django.conf import settings
 from .cart import Cart
 import json
 
-# @require_POST
+@require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
     # cart = request.session.get(settings.CART_SESSION_ID)

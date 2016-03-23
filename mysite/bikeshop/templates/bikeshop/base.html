@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="http://mdbootstrap.com/mdbcdn/mdb.min.css" rel="stylesheet">   
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
 
 
@@ -33,10 +33,10 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">Catalogs</li>
-                              <li><a href="/catalog/Bikes/categories">Bikes</a></li>
-                              <li><a href="/catalog/Parts/categories">Parts</a></li>
-                              <li><a href="/catalog/Accessories/categories">Accessories</a></li>
-                              <li><a href="/catalog/Clothing/categories">Clothing</a></li>
+                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Bikes"%}">Bikes</a></li>
+                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Parts"%}">Parts</a></li>
+                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Accessories"%}">Accessories</a></li>
+                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Clothing"%}">Clothing</a></li>
                               <li role="separator" class="divider"></li>
                               <li class="dropdown-header">Actions</li>
                               <li><a href="/orders/status">Check order status</a></li>
@@ -51,9 +51,6 @@
                       </li>
                       <li>
                           <a href="#">About</a>
-                      </li>
-                      <li>
-                          <a href="#">Events</a>
                       </li>
                       <li>
                           <a href="#">Team</a>

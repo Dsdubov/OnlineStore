@@ -187,14 +187,19 @@ def get_query(query_string, search_fields):
     return query
 
 def search(request):
+    wishlist = request.session.get(settings.WISHLIST_SESSION_ID)
+    if wishlist:
+        wishlist_ids = [int(x) for x in wishlist.keys()]
+    else:
+        wishlist_ids = []
     query_string = ''
     found_entries = None
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         
-        entry_query = get_query(query_string, ['name', 'description',])
+        entry_query = get_query(query_string, ['name', 'description', 'manufacturer'])
         
         found_entries = Product.objects.filter(entry_query).order_by('-price_in_dollars')
 
     return render_to_response('bikeshop/search.html',
-                          { 'query_string': query_string, 'found_entries': found_entries }, context_instance=RequestContext(request))
+                          { 'query_string': query_string, 'found_entries': found_entries, 'wishlist_ids' :wishlist_ids }, context_instance=RequestContext(request))

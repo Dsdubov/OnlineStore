@@ -17,4 +17,4 @@ def wishlist_detail(request):
 	    wishlist_ids = [int(x) for x in wishlist.get_product_ids()]
     else:
     	wishlist_ids = []
-    return render(request, 'wishlist/detail.html', {'wishlist': wishlist, 'wishlist_ids' : wishlist_ids})
+    return render(request, 'wishlist/wishlist.html', {'wishlist': wishlist, 'wishlist_ids' : wishlist_ids})
