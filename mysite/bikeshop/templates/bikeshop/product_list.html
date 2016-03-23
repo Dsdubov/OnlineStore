@@ -148,7 +148,7 @@
                                         <h5>Short description</h5>
                                         <hr>{{ product.description }}<br>
                                         <div class="text-center">
-                                            <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">Details</a>
+                                            <a class="btn btn-default btn-lg waves-effect waves-light" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{% endif %}">Details</a>
                                         </div>
                                     </div>
                                     <!--/.Third column: product description-->

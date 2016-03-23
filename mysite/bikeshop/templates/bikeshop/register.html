@@ -2,108 +2,55 @@
 {% load staticfiles %}
 
 {% block content %}
-<!-- All the files that are required -->
-<link rel="stylesheet" href="{% static 'css/register.css' %}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-<script src="{% static 'js/register.js' %}"></script>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<!-- REGISTRATION FORM -->
-<div class="text-center" style="padding:50px 0">
-    {% if registered %}
-    <strong>thank you for registering!</strong>
-    <a href="/">Return to the homepage.</a><br />
-    {% else %}
-	<div class="logo">register</div>
-	{% endif %}
-	<!-- Main Form -->
-	<div class="login-form-1">
-		<form id="user_form" class="text-left" method="post" action="/register/" enctype="multipart/form-data">
-		{% csrf_token %}
-			<div class="login-form-main-message"></div>
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="reg_username" class="sr-only">Username</label>
-						<input type="text" class="form-control" id="reg_username" name="username" placeholder="username">
-					</div>
-					<div class="form-group">
-						<label for="reg_password" class="sr-only">Password</label>
-						<input type="password" class="form-control" id="reg_password" name="password" placeholder="password">
-					</div>					
-					<div class="form-group">
-						<label for="reg_email" class="sr-only">Email</label>
-						<input type="text" class="form-control" id="reg_email" name="email" placeholder="email">
-					</div>
-				</div>
-				<button type="submit" name="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-			</div>
-			<div class="etc-login-form">
-				<p>already have an account? <a href="/login">login here</a></p>
-			</div>
-		</form>
-	</div>
-	<!-- end:Main Form -->
-</div>
-
-{% endblock %}
-
-<!-- 
-<div class="modal-content">
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="modal-content">
             <div class="modal-header text-center">
-                <h4><i class="fa fa-user"></i> Register with:</h4>
-                <a class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
-                <a class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
-                <a class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
-                <a class="btn-floating btn-large li-bg waves-effect waves-light"><i class="fa fa-linkedin"> </i></a>
-                <a class="btn-floating btn-large git-bg waves-effect waves-light"><i class="fa fa-github"> </i></a>
+                {% if registered %}
+                <strong>Thank you for registering!</strong>
+                <a href="/">Return to the homepage.</a><br />
+                {% endif %}
+                <h4><i class="fa fa-user"></i> Register</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form>
-                            <h4 class="text-center">or:</h4>
-
+                        <form id="user_form" class="text-left" method="post" action="/register/" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <div class="input-field">
-                                <i class="material-icons prefix">email</i>
-                                <input id="icon_email" type="tel" class="validate">
-                                <label for="icon_email">Your email</label>
+                                <i class="material-icons prefix">account_circle</i>
+                                <input type="text" class="form-control" id="reg_username" name="username">
+                                <label for="reg_username">Username</label>
                             </div>
+                            
 
                             <div class="input-field">
                                 <i class="material-icons prefix">lock</i>
-                                <input id="password" type="password" class="validate">
+                                <input type="password" class="form-control" id="reg_password" name="password">
                                 <label for="password">Password</label>
                             </div>
 
                             <div class="input-field">
-                                <i class="material-icons prefix">lock</i>
-                                <input id="password-rep" type="password" class="validate">
-                                <label for="password-rep" class="">Repeat password</label>
+                                <i class="material-icons prefix">email</i>
+                                <input type="text" class="form-control" id="reg_email" name="email">
+                                <label for="icon_email">Your email</label>
                             </div>
 
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-lg waves-effect waves-light">Sign up</button>
-                                <div class="subscription-checkbox">
-                                    
-                                        <input type="checkbox" id="test66">
-                                        <label for="test66">
-                                            <p>Subscribe me to the Newsletter</p>
-                                        </label>
-                                    
-                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg waves-effect waves-light">Sign up</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal">X</button>
                 <div class="options">
-                    <p>Already have an account? <a href="#">Login</a></p>
+                    <p>Already have an account? <a href="/login/">Login</a></p>
                 </div>
             </div>
-        </div> -->
+        </div> 
+    </div>
+</div>
+{% endblock %}

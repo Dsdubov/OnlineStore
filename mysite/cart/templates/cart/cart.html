@@ -36,7 +36,7 @@
                                 <img src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image.png" %}{% endif %}" style="width: 100px; height: 70px">
                             </div>
                             <div class="col-md-2 col-xs-12">
-                            <strong>{{ product.name }}</strong>
+                            <strong><a class="text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{% endif %}" >{{ product.name }}</a></strong>
                             <br/>
                             </div>
                             <div class="col-md-8 col-xs-12">

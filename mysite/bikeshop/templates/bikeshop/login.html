@@ -2,75 +2,41 @@
 {% load staticfiles %}
 
 {% block content %}
-<!-- All the files that are required -->
-<link rel="stylesheet" href="{% static 'css/register.css' %}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-<script src="{% static 'js/register.js' %}"></script>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<!-- Where all the magic happens -->
-<!-- LOGIN FORM -->
-<div class="text-center" style="padding:50px 0">
-    <div class="logo">login</div>
-    <!-- Main Form -->
-    <div class="login-form-1">
-        <form id="login_form" class="text-left" method="post" action="/login/">
-        {% csrf_token %}
-            <div class="login-form-main-message"></div>
-            <div class="main-login-form">
-                <div class="login-group">
-                    <div class="form-group">
-                        <a>
-                                {% if user.is_authenticated %}
-                                You are logged in as: {{ user.username }}
-                                {% else %}
-                                Welcome
-                                {% endif %}
-                        </a>
-                        <label for="lg_username" class="sr-only">Username</label>
-                        <input type="text" class="form-control" id="lg_username" name="username" placeholder="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="lg_password" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="lg_password" name="password" placeholder="password">
-                    </div>
-                </div>
-                <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="etc-login-form">
-                <p>forgot your password? <a href="/#">click here</a></p>
-                <p>new user? <a href="/register">create new account</a></p>
-            </div>
-        </form>
-    </div>
-    <!-- end:Main Form -->
-</div>
-{% endblock %}
 
-<!-- <div class="modal-content">
+<div class="row">
+    <div class="col-md-3"> </div>
+    <div class="col-md-6">
+    
+        <div class="modal-content">
             <div class="modal-header text-center">
                 <h4><i class="fa fa-user"></i> Login</h4>
+                <a>
+                            {% if user.is_authenticated %}
+                            You are logged in as: {{ user.username }}
+                            {% else %}
+                            Welcome
+                            {% endif %}
+                </a>
             </div>
             <div class="modal-body" style="padding:40px 50px;">
                 <div class="row">
-                    <form class="col-md-12">
+                    <form id="login_form" class="text-left" method="post" action="/login/">
+                    {% csrf_token %}
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">email</i>
-                                <input id="icon_email" type="tel" class="validate">
-                                <label for="icon_email" class="">Your email</label>
+                                <i class="material-icons prefix">account_circle</i>
+                                <input type="text" class="form-control" id="lg_username" name="username">
+                                <label for="lg_username" class="">Username</label>
                             </div>
 
                             <div class="input-field">
                                 <i class="material-icons prefix">lock</i>
-                                <input id="password" type="password" class="validate">
+                                <input type="password" class="form-control" id="lg_password" name="password">
                                 <label for="password" class="">Password</label>
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary waves-effect waves-light">Login</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Login</button>
 
                             </div>
                         </div>
@@ -78,10 +44,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal">X</button>
                 <div class="options">
-                    <p>Not a member? <a href="#">Sign Up</a></p>
+                    <p>Not a member? <a href="/register">Sign Up</a></p>
                     <p>Forgot <a href="#">Password?</a></p>
                 </div>
             </div>
-        </div> -->
+        </div>
+    </div>
+</div>
+{% endblock %}
