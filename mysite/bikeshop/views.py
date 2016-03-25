@@ -63,7 +63,7 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def add_comment(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -143,7 +143,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your account is disabled.")
