@@ -117,6 +117,37 @@
                             
                         </div>
                         <div class="tab-pane fade" id="service-three">
+                                {% if user.is_authenticated %}
+                                {{ user.username }}, leave a comment: </br>
+                                <form action="{% url "bikeshop:add_comment" product.id%}" method="post">
+                                    {% csrf_token %}
+                                    {{comment_form.as_p}}
+                                    <button type="submit" class="btn btn-success waves-effect waves-light">
+                                        <i class="material-icons">send<h>Submit</h></i>
+                                    </button>
+                                </form>
+                                {% else %}
+                                <a href="/register">Sign Up</a>, for leaving a comment
+                                {% endif %}
+                                {% for comment in product.product.comment.all %}
+                                    <div class="card">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                By: {{comment.user_name}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{comment}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                {{comment.pub_date}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                         </div>
                     </div>
                     <hr>

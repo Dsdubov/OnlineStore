@@ -1,9 +1,9 @@
 import re
 from .models import *
+from . import views
 from cart.cart import Cart
 from django.db.models import Q
 from django.conf import settings
-from django.shortcuts import render
 from django.http import HttpResponse
 from wishlist.models import Wishlist
 from django.contrib.auth import logout
@@ -15,6 +15,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate 
 from django.shortcuts import render_to_response
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 def start(request):
@@ -34,7 +35,8 @@ def product_details(request, product_name):
         wishlist_ids = []
     product = ProductDetail.objects.get(product__name=product_name)
     cart_product_form = CartAddProductForm()
-    return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form, 'wishlist' : wishlist, 'wishlist_ids' : wishlist_ids})
+    comment_form = CommentForm()
+    return render(request, 'bikeshop/product_detail.html', {'product' : product, 'cart_product_form': cart_product_form, 'wishlist' : wishlist, 'wishlist_ids' : wishlist_ids, 'comment_form' : comment_form})
 
 def product_list(request, category_name):
     wishlist = request.session.get(settings.WISHLIST_SESSION_ID)
@@ -64,18 +66,24 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
 
+def add_comment(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.product = product
+            comment.user_name = request.user
+            comment.save()
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        form = CommentForm()
+    return render(request, 'bikeshop/product_detail.html', {'comment_form': form, 'product' : product})
+
 def register(request):
-    # Like before, get the request's context.
     context = RequestContext(request)
-
-    # A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
     registered = False
-
-    # If it's a HTTP POST, we're interested in processing form data.
     if request.method == 'POST':
-        # Attempt to grab information from the raw form information.
-        # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         # If the two forms are valid...
         if user_form.is_valid():
@@ -203,3 +211,4 @@ def search(request):
 
     return render_to_response('bikeshop/search.html',
                           { 'query_string': query_string, 'found_entries': found_entries, 'wishlist_ids' :wishlist_ids }, context_instance=RequestContext(request))
+

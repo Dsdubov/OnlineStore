@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),    
 	url(r'^logout/$', views.user_logout, name='logout'),
 	url(r'^login/$', views.user_login, name='log_in'),
+	url(r'^add_comment/(?P<product_id>\d+)/$', views.add_comment, name='add_comment'),
 	url(r'^register/$', views.register, name='registration'),
 	url(r'^cart/$', views.cart, name='chart'),
 	url(r'^pay/$', views.pay, name='pay'),

@@ -18,4 +18,5 @@ admin.site.register(CatalogCategory)
 admin.site.register(ProductDetail)
 admin.site.register(ProductAttribute)
 admin.site.register(UserProfile)
+admin.site.register(Comment)
 # Register your models here.

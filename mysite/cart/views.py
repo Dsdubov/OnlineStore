@@ -12,7 +12,6 @@ import json
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
-    # cart = request.session.get(settings.CART_SESSION_ID)
     product = get_object_or_404(Product, id=product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
@@ -20,7 +19,6 @@ def cart_add(request, product_id):
         ret = cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-    # return HttpResponse( content_type='application/json')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def cart_remove(request, product_id):

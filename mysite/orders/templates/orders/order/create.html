@@ -1,9 +1,12 @@
 {% extends "bikeshop/base.html" %}
 
 {% block content %}
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
     <div class="row card">
-              <label class="col-md-4"></label>
-              <div class="col-md-4">
+              <label class="col-md-12"></label>
+              <div class="col-md-12">
                 <h3>Your order</h3>
                 <ul>
                     {% for item in cart %}
@@ -31,12 +34,12 @@
             </ul>
           {% endif %}
           {% for field in form %}
-          <label class="col-md-4"></label>
+          <label class="col-md-12"></label>
           <div id="{{ field.auto_id }}_container">
             {{ field.help_text }}
             <div class="row">
-                <div class="input-field col-md-4">
-                  <label class="col-md-6" id="{{ field.auto_id }}">{{ field.label }}</label>
+                <div class="input-field col-md-12">
+                  <label class="col-md-12" id="{{ field.auto_id }}">{{ field.label }}</label>
                   {{ field }}
                 </div>
             </div>
@@ -46,11 +49,13 @@
           </div>
           {% endfor %}
             <div class="col-md-12">
-              <label class="col-md-5"></label>
+              <label class="col-md-4"></label>
               <input type="submit" class="btn btn-primary " value="Submit"/>
             </div>
         </form>
       </div>
     </div>
+</div>
+</div>
 {% endblock %}
 
