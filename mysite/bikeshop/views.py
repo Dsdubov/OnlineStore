@@ -1,6 +1,5 @@
 import re
 from .models import *
-from . import views
 from cart.cart import Cart
 from django.db.models import Q
 from django.conf import settings
