@@ -15,7 +15,7 @@
                     <div class="card-image">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
-                          <ol class="carousel-indicators">
+                          <ol class="carousel-indicators" style="z-index: 2">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                             <li data-target="#myCarousel" data-slide-to="1"></li>
                             <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -59,9 +59,9 @@
                         </div>
                         <div class="row text-center">
                             {% if product.product.quantity > 0 %}
-                            <div class="product-stock">In Stock: {{ product.product.quantity }}</div>
+                                <div class="product-stock">In Stock: {{ product.product.quantity }}</div>
                             {% else %}
-                            <div class="product-stock" style="color: red">Not in Stock</div>
+                                <div class="product-stock" style="color: red">Not in Stock</div>
                             {% endif %}
                         </div>
                         <form action="{% url "cart:cart_add" product.id %}" method="post">
@@ -80,9 +80,9 @@
                         </form>
                         <div class="row text-center">
                             {% if product.product.id in wishlist_ids %}
-                            <a type="button" class="btn-floating btn-small waves-effect waves-light btn-danger darken-4" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                                <a type="button" class="btn-floating btn-small waves-effect waves-light btn-danger darken-4" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
                             {% else %}
-                            <a type="button" class="btn-floating btn-small waves-effect waves-light btn-primary darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                                <a type="button" class="btn-floating btn-small waves-effect waves-light btn-primary darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
                             {% endif %}
                         </d iv>
                     </div>
@@ -130,15 +130,24 @@
                                 <a href="/register/">Sign Up</a> or <a href="/login/">Login</a> for leaving a comment
                                 {% endif %}
                                 {% for comment in product.product.comment.all %}
-                                    <div class="card">
+                                    <div class="card hoverable">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-10">
                                                 By: {{comment.user_name}}
                                             </div>
-                                        </div>
+                                            {% if user.is_authenticated and comment.user_name == user %}
+                                                <div class="col-md-2 text-right">
+                                                    <a class="btn btn-danger btn-sm" href="{% url 'bikeshop:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                                                </div>
+                                            {% endif %}
+                                        </div><!-- 
+                                        {% if not comment.approved_comment %}
+                                            <a class="btn btn-default" href="{% url 'bikeshop:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                                            <a class="btn btn-default" href="{% url 'bikeshop:comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                                        {% endif %} -->
                                         <div class="row">
                                             <div class="col-md-12">
-                                                {{comment}}
+                                                {{comment.text|linebreaks}}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -147,6 +156,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                {% empty %}
+                                    No comment yet. You can be the first there!
                                 {% endfor %}
                         </div>
                     </div>
