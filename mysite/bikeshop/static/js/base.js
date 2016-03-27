@@ -24,13 +24,13 @@ $(document).ready(function() {
     $('#list').click(function(event){
       event.preventDefault();
       $('#products .item').addClass('list-group-item');
-      $('#description').css({'display' : 'block'});
+      $('.description').show();
     });
     $('#grid').click(function(event){
       event.preventDefault();
       $('#products .item').removeClass('list-group-item');$
       ('#products .item').addClass('grid-group-item');
-      $('#description').css({'display' : 'none'});
+      $('.description').hide();
     });
 });
 /*********************
