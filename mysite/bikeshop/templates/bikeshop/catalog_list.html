@@ -1,6 +1,6 @@
 {% extends 'bikeshop/base.html' %}
 {% load staticfiles %}
-
+<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
 {% block content %}
         <div class="row">
             <div class="col-md-10">
@@ -25,8 +25,8 @@
                 <div class="caption text-center">
                     <h4 class="group inner list-group-item-heading"><a href="{% url "bikeshop:categories_list" catalog.name %}">{{ catalog.name }}</a></h4>
                 </div>
-                <div id="description" style="display: none">
-                        HI THERE
+                <div class="description">
+                        HI THERE sdkjfnsdkf
                 </div>
             </div>
         </div>
