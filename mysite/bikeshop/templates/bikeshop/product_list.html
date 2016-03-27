@@ -156,7 +156,9 @@
                         <div class="col-md-4">
                             <a href="#" class="btn btn-info btn-xs waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
                         </div>
-                        <div class="col-md-4"></div>
+                        <div class="col-md-4 description">
+                            {{ product.description }}
+                        </div>
                         <div class="col-md-4 text-center">
                             {% if product.id in wishlist %}
                             <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>

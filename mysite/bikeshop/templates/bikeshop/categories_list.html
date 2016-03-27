@@ -26,6 +26,9 @@
                     <a class="group inner list-group-item-heading" href="{% url "bikeshop:product_list" category.name %}">{{ category.name }}</a>
                     <br>
                 </div>
+                <div class="description">
+                        {{ catalog.description }}
+                </div>
             </div>
         </div>
         {% endfor %}
