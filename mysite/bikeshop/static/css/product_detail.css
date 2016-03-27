@@ -130,3 +130,8 @@
 .service-image-left > center > img,.service-image-right > center > img{
 	max-height: 155px;
 }
+
+
+.comment {
+	padding: 10px;
+}

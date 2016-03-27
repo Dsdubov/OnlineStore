@@ -18,12 +18,49 @@
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
 
+        <div class="modal fade" id="cart-modal" role="dialog">
+            <div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content modal-cart">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cart</h4>
+      </div>
+      <div class="modal-body">
+
+          <ul class="collection">
+          {% for item in cart %}
+              {% with product=item.product %}
+                  <li class="collection-item">
+                      <div>
+                          <p><span class="quantity"> {{ item.quantity }}x</span> {{ product.name }} <span class="label green">${{ item.total_price }}</span>
+                          <a type="button" href="{% url "cart:cart_remove" product.id %}" class="secondary-content">
+                          <i class="material-icons">close</i></a></p>
+                      </div>
+                  </li>
+              {% endwith %}
+          {% endfor %}
+          <a type="button" href="{% url "orders:order_create" %}" class="btn btn-success btn-block btn-primary waves-effect waves-light">Checkout</a>
+          <div class="cartPageLink">
+              <a href="/cart">
+                  <p>Go to cart page</p>
+              </a>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+
+</div>
+</div>
 
 </head>
   <body bgcolor="#E6E6FA">
       <div id="wrapper" class="toggled">
           <!-- <div class="overlay"></div> -->
-              <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation" style="z-index: 1">
+              <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                   <ul class="nav sidebar-nav">
                       <a href="/" >
                       <ul class="brand" style="height: 160px; background-size: cover; background-image: url({% static 'bikeshop/img/logo.png' %});">
@@ -33,10 +70,14 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">Catalogs</li>
-                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Bikes"%}">Bikes</a></li>
-                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Parts"%}">Parts</a></li>
-                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Accessories"%}">Accessories</a></li>
-                              <li><a href="{% url "bikeshop:categories_list" catalog_name="Clothing"%}">Clothing</a></li>
+                              {% for catalog in catalogs %}
+                                <li><a href="{% url "bikeshop:categories_list" catalog_name=catalog.name %}">{{catalog}}</a></li>
+                                {% for category in all_categories %}
+                                  {%if category.catalog == catalog%}
+                                    <a href="{% url "bikeshop:product_list" category %}">{{category}}</a>
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
                               <li role="separator" class="divider"></li>
                               <li class="dropdown-header">Actions</li>
                               <li><a href="/orders/status">Check order status</a></li>
@@ -53,30 +94,13 @@
                           <a href="#">About</a>
                       </li>
                       <li>
-                          <a href="#">Team</a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li class="dropdown-header">Dropdown heading</li>
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li><a href="#">Separated link</a></li>
-                          <li><a href="#">One more separated link</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                          <a href="#">Services</a>
-                      </li>
-                      <li>
                           <a href="#">Contact</a>
                       </li>
                   </ul>
               </nav>
 
                      <!--Navigation-->
-        <nav class="navbar navbar-default navbar-fixed-top z-depth-1" role="navigation" style="background: #263238;" id="header">
+        <nav class="navbar navbar-fixed-top z-depth-1" role="navigation" style="background: #263238;" id="header">
               <div class="container-fluid">
                   <div class="navbar-header">
                       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -97,17 +121,16 @@
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                      {% if request.session.cart %}
-                      <li><a href="/cart" class="navbar-brand waves-effect waves-light"><i class="material-icons" style="color: #00C851">shopping_cart</i><sup>{{request.session.cart_len}}</sup></a></li>
-                      {% else %}
-                      <li><a href="/cart" class="navbar-brand waves-effect waves-light"><i class="material-icons">shopping_cart</i></a></li>
-                      {% endif %}
+                      <li class="cart">
+                          <a class="btn-flat waves-effect waves-light" data-toggle="modal" data-target="#cart-modal"><i class="material-icons">shopping_cart</i><sup class="badge social-counter">{{ cart.len }}</sup></a>
+                      </li>
 
                       {% if request.session.wishlist %}
                       <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons" style="color: #ff4444">favorite</i><sup>{{request.session.wishlist|length}}</sup></a></li>
                       {% else %}
                       <li><a href="/wishlist/" class="navbar-brand waves-effect waves-light"><i class="material-icons">favorite</i></a></li>
                       {% endif %}
+
                       {% if user.is_authenticated %}
                       <li><a href="/logout" class="navbar-brand waves-effect waves-light">Logout</a></li>
                       {% else %}
@@ -123,7 +146,7 @@
                   {% block content %}
                   {% endblock content %}
               </div>
-              <div class="col-md-2 text-center">Somethin right
+              <div class="col-md-2 text-center">Something right
               </div>
             </div>
           </div>

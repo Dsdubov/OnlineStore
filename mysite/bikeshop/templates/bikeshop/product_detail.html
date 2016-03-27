@@ -4,7 +4,17 @@
 <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
 
 <div class="container-fluid">
-    <a id="" class="btn btn-default btn-sm"><span class="glyphicon" onclick="goBack()">Back</span></a>
+    <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{% url "bikeshop:start" %}">Home</a></li>
+                    <li><a href="{% url "bikeshop:catalog_list" %}">Catalogs</a></li>
+                    <li><a href="{% url "bikeshop:categories_list" product.product.category.catalog %}">{{ product.product.category.catalog }}</a></li>
+                    <li><a href="{% url "bikeshop:product_list" product.product.category %}">{{ product.product.category }}</a></li>
+                    <li class="active">product</li>
+                </ol>
+            </div>
+        </div>
     <div class="content-wrapper">  
         <div class="item-container">    
             <div class="container-fluid">
@@ -130,10 +140,9 @@
                                 <a href="/register/">Sign Up</a> or <a href="/login/">Login</a> for leaving a comment
                                 {% endif %}
                                 {% for comment in product.product.comment.all %}
-                                    <div class="card hoverable">
+                                    <div class="card hoverable comment">
                                         <div class="row">
                                             <div class="col-md-10">
-                                                By: {{comment.user_name}}
                                             </div>
                                             {% if user.is_authenticated and comment.user_name == user %}
                                                 <div class="col-md-2 text-right">
@@ -151,7 +160,11 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12 text-right">
+
+                                            <div class="col-md-6 col-xs-12 text-left">
+                                                By: {{comment.user_name}}
+                                            </div>
+                                            <div class="col-md-6 col-xs-12 text-right">
                                                 {{comment.pub_date}}
                                             </div>
                                         </div>

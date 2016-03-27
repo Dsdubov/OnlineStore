@@ -8,4 +8,4 @@ class OrderCreateForm(forms.ModelForm):
 
 
 class GetStatusForm(forms.Form):
-	product_id = forms.CharField()
+	id = forms.CharField()

@@ -43,11 +43,11 @@ def product_list(request, category_name):
         wishlist_ids = [int(x) for x in wishlist.keys()]
     else:
         wishlist_ids = []
-    cart = Cart(request)
+    # cart = Cart(request)
     products = Product.objects.filter(category__name=category_name)
     category = CatalogCategory.objects.get(name=category_name)
     cart_product_form = CartAddProductForm()
-    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'cart': cart, 'catalog' : category.catalog, 'category' : category, 'wishlist' : wishlist_ids})
+    return render(request, 'bikeshop/product_list.html', {'products': products, 'cart_product_form': cart_product_form, 'catalog' : category.catalog, 'category' : category, 'wishlist' : wishlist_ids})
 
 def catalog_list(request):
     catalogs = Catalog.objects.all()

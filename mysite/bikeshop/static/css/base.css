@@ -15,9 +15,9 @@ html, body {
 }
 
 #wrapper {
-    margin-top: 100px;
+    margin-top: 150px;
     min-height: 100%;
-    padding-bottom: -140px;
+    padding-bottom: -150px;
     overflow:auto;
     position: relative;
     padding-left: 0;

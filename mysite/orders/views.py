@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import OrderItem, Order
 from .forms import OrderCreateForm,GetStatusForm
 # from .tasks import order_created
 from cart.cart import Cart
+from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
@@ -10,9 +11,12 @@ def status(request):
     if request.method == 'POST':
         form = GetStatusForm(request.POST)
         if form.is_valid():
-            product_id = request.POST['product_id']
-            order = Order.objects.get(id=product_id)
-            return render(request, 'orders/order/status.html', {'order': order, 'form': form})
+            id = request.POST['id']
+            try:
+                order = Order.objects.get(id=id)
+                return render(request, 'orders/order/status.html', {'order': order, 'form': form})
+            except:
+                return render(request, 'orders/order/status.html', {'form': form})
         else:
             print("Not valid")
     else:

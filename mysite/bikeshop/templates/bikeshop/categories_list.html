@@ -1,18 +1,22 @@
 {% extends 'bikeshop/base.html' %}
 {% load staticfiles %}
 {% block content %}
-    <div class="well well-sm">
-        <ol class="breadcrumb">
-        <a id="" class="btn btn-default btn-sm" href="javascript:history.go(-1);"><span class="glyphicon">Back</span></a>
-          <li><a href="{{ catalog.path|urlencode }}">{{ catalog }}</a></li>
-          <li class="active">Categories</li>
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
+        <div class="row">
+            <div class="col-md-10">
+                <ol class="breadcrumb">
+                    <li><a href="{% url "bikeshop:start" %}">Home</a></li>
+                    <li><a href="{% url "bikeshop:catalog_list" %}">Catalogs</a></li>
+                    <li class="active">{{catalog}}</li>
+                </ol>
+            </div>
+            <div class="col-md-2 text-right">
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-flat btn-sm"><span class="glyphicon glyphicon-th-list">
+                    </span></a> <a href="#" id="grid" class="btn btn-flat btn-sm"><span
+                        class="glyphicon glyphicon-th"></span></a>
+                </div>
+            </div>
         </div>
-        </ol>
-    </div>
     <div id="products" class="list-group">
         {% for category in categories %}
         <div class="item  col-xs-6 col-lg-2">
