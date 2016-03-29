@@ -44,6 +44,13 @@ background: #e0e0e0;
     padding-left: 220px;
 }
 
+.hideOverflow
+{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:block;
+}
+
 #sidebar-wrapper {
     z-index: 1000;
     left: 220px;
@@ -52,7 +59,7 @@ background: #e0e0e0;
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #546e7a;
+    background: #546e7e;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

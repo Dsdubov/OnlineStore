@@ -31,6 +31,7 @@ $(document).ready(function() {
       $('#products .item').removeClass('list-group-item');$
       ('#products .item').addClass('grid-group-item');
       $('.description').hide();
+      $('#grid').alert("Hello Box")
     });
 });
 /*********************
