@@ -160,7 +160,7 @@
                             <div class="col-md-4">
                             </div>
                             <div class="col-md-4 text-right">
-                                {% if product.id in wishlist %}
+                                {% if product.id in wishlist_ids %}
                                 <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>
                                 {% else %}
                                 <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" >favorite</i></a>
