@@ -1,4 +1,3 @@
-
 {% extends 'bikeshop/base.html' %}
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
@@ -22,14 +21,12 @@
         {% for catalog in catalogs %}
         <div class="item  col-xs-12 col-lg-4">
             <div class="thumbnail card card-product hoverable">
-                <img class="group list-group-image" src="{% if catalog.photo %}{% static catalog.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="">
+                <img class="group list-group-image" src="{% if catalog.photo %}{% static catalog.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:200px; height:200px;">
                 <div class="caption text-center">
                     <h4 class="group inner list-group-item-heading"><a href="{% url "bikeshop:categories_list" catalog.name %}">{{ catalog.name }}</a></h4>
                 </div>
-                <div class="description text-left">
-                        {{ catalog.description }}<br>
-                        Some description
-                        Some descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome 
+                <div class="description">
+                        {{ catalog.description }}
                 </div>
             </div>
         </div>

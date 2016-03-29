@@ -43,16 +43,13 @@ class Cart(object):
         """
         product_id = str(product.id)
         if product_id not in self.cart:
-            if quantity < product.quantity:
-                self.cart[product_id] = {'quantity': 0,
-                                          'price': str(product.price_in_dollars)}
-            else:
-                return False    
+            self.cart[product_id] = {'quantity': 0,
+                                      'price': str(product.price_in_dollars)}
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
-        if self.cart[product_id]['quantity'] < product.quantity:
+        if self.cart[product_id]['quantity'] <= product.quantity:
             self.save()
             return True
         else:

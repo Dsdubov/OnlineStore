@@ -22,12 +22,12 @@
         <div class="item  col-xs-6 col-lg-2">
             <div class="thumbnail card card-product hoverable">
                 <img class="group list-group-image" src="{% if category.photo %}{% static category.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width:100px; height:100px;">
-                <div class="caption text-center" style="min-height: 60; text-align: center">
+                <div class="caption" style="height: 50; text-align: center">
                     <a class="group inner list-group-item-heading" href="{% url "bikeshop:product_list" category.name %}">{{ category.name }}</a>
-                    <div class="description text-left ">
-                            {{ category.description }}<br>
-                            Some descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome 
-                    </div>
+                    <br>
+                </div>
+                <div class="description">
+                        {{ catalog.description }}
                 </div>
             </div>
         </div>

@@ -126,16 +126,17 @@ Results for searching by <a>{{query_string}}</a>:
                         </div>
                         <div class="col-md-8 text-right">
                             {% if product.quantity > 0 %}
-                            <div class="bold-70 " style="color: #00C851">In Stock: <br>{{ product.quantity }}</div>
+                            <div class="bold-70 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
                             {% else %}
-                            <div class="bold-70 " style="color: #ff4444">Not <br>in Stock</div>
+                            <div class="bold-70 " style="color: #ff4444">Not in Stock</div>
                             {% endif %}
                         </div>                
                     </div>
                     <div class="row">
-                        <div class="col-md-10 text-left hideOverflow">
+                        <div class="col-md-12 text-left" >
                             <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
                         </div>
+
                     </div>
                     <div class="row">                        
                         <div class="col-md-4">

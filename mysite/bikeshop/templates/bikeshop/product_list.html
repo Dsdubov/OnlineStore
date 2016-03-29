@@ -130,48 +130,46 @@
 
         <div class="item col-xs-12 col-md-3">
             <div class="thumbnail card card-product hoverable">
-                <div class="caption text-center">
+                <img class="group list-group-image " src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
+                <div class="caption">
                     <div class="row">
-                        <div class="col-md-4 text-left">
-                            <div class="bold-700" >
+                        <div class="col-md-4 text left">
+                            <div class="bold-700">
                                 ${{ product.price_in_dollars }}
                             </div>
                         </div>
                         <div class="col-md-8 text-right">
                             {% if product.quantity > 0 %}
-                            <div style="color: #00C851">In Stock: {{ product.quantity }}</div>
+                            <div class="bold-70 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
                             {% else %}
-                            <div class="bold-50 " style="color: #ff4444">Not in Stock</div>
+                            <div class="bold-70 " style="color: #ff4444">Not in Stock</div>
                             {% endif %}        
                         </div>                
                     </div>
-                <img class="group list-group-image " src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
-                    <!-- <div class="row"> -->
-                            <a class="group inner list-group-item-heading text-center hideOverflow" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
-                            <div class="description text-center">
-                                {{ product.description }}
-                                DESCRIPTION DESCRIPTION DESCRIPTION  DESCRIPTIONDESCRIPTION DESCRIPTIONDESCRIPTION 
-                            </div>
-                </div>
-                        <div class="col-md-12 list-group-item-heading  text-center hideOverflow" >
+                    <div class="row">
+                        <div class="col-md-12 text-left" >
+                            <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
                         </div>
 
-                    <!-- </div> -->
-                    <!-- <div class="row">                         -->
+                    </div>
+                    <div class="row">                        
                         <div class="col-md-4">
                             <a href="#" class="btn btn-info btn-xs waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
                         </div>
-                        <div class="col-md-4 text-center list-group-item-text">
+                        <div class="col-md-4">
+                            <div class="description">
+                                {{ product.description }}
+                            </div>
                         </div>
-                        <div class="col-md-4 text-right">
+                        <div class="col-md-4 text-center">
                             {% if product.id in wishlist %}
                             <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>
                             {% else %}
                             <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" >favorite</i></a>
                             {% endif %}
                         </div>
-                    <!-- </div> -->
-                <!-- </div> -->
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
