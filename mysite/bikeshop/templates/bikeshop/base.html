@@ -12,48 +12,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://mdbootstrap.com/mdbcdn/mdb.min.css" rel="stylesheet">
-    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
 
-        <div class="modal fade" id="cart-modal" role="dialog">
-            <div class="modal-dialog">
+<div class="modal fade" id="cart-modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content modal-cart">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cart</h4>
+          </div>
+          <div class="modal-body">
 
-  <!-- Modal content-->
-  <div class="modal-content modal-cart">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Cart</h4>
-      </div>
-      <div class="modal-body">
-
-          <ul class="collection">
-          {% for item in cart %}
-              {% with product=item.product %}
-                  <li class="collection-item">
-                      <div>
-                          <p><span class="quantity"> {{ item.quantity }}x</span> {{ product.name }} <span class="label green">${{ item.total_price }}</span>
-                          <a type="button" href="{% url "cart:cart_remove" product.id %}" class="secondary-content">
-                          <i class="material-icons">close</i></a></p>
-                      </div>
-                  </li>
-              {% endwith %}
-          {% endfor %}
-          <a type="button" href="{% url "orders:order_create" %}" class="btn btn-success btn-block btn-primary waves-effect waves-light">Checkout</a>
-          <div class="cartPageLink">
-              <a href="/cart">
-                  <p>Go to cart page</p>
-              </a>
+              <ul class="collection">
+              {% for item in cart %}
+                  {% with product=item.product %}
+                      <li class="collection-item">
+                          <div>
+                              <p><span class="quantity"> {{ item.quantity }}x</span> {{ product.name }} <span class="label green">${{ item.total_price }}</span>
+                              <a type="button" href="{% url "cart:cart_remove" product.id %}" class="secondary-content">
+                              <i class="material-icons">close</i></a></p>
+                          </div>
+                      </li>
+                  {% endwith %}
+              {% endfor %}
+              <a type="button" href="{% url "orders:order_create" %}" class="btn btn-success btn-block btn-primary waves-effect waves-light">Checkout</a>
+              <div class="cartPageLink">
+                  <a href="/cart">
+                      <p>Go to cart page</p>
+                  </a>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
       </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-  </div>
-
-</div>
+    </div>
 </div>
 
 </head>
