@@ -2,157 +2,173 @@
 {% load staticfiles %}
 
 {% block content %}
-
-<div class="well well-sm">
-Results for searching by <a>{{query_string}}</a>:
+<div class="row">
+    <div class="col-md-10">
+        <div class="well well-sm">
+        Results for searching by <a>{{query_string}}</a>:
+        </div>
+    </div>
+    <div class="col-md-2 text-right">
+        <div class="btn-group">
+            <a href="#" id="list" class="btn btn-flat btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span></a> <a href="#" id="grid" class="btn btn-flat btn-sm"><span
+                class="glyphicon glyphicon-th"></span></a>
+        </div>
+    </div>
 </div>
-{% for product in found_entries %}
+<div id="products" class="row list-group">
+    {% for product in found_entries %}
 
-        <!-- Modal: QUick look -->
-        <div class="modal fade" id="{{product.id}}" role="dialog">
-            <div class="modal-dialog modal-qlook">
+            <!-- Modal: QUick look -->
+            <div class="modal fade" id="{{product.id}}" role="dialog">
+                <div class="modal-dialog modal-qlook">
 
-                <!--Modal content-->
-                <div class="modal-content">
+                    <!--Modal content-->
+                    <div class="modal-content">
 
-                    <!-- Modal header-->
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title text-center">{{ product.name }}</h4>
-                    </div>
-                    <!-- /.Modal conheaderent-->
+                        <!-- Modal header-->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">{{ product.name }}</h4>
+                        </div>
+                        <!-- /.Modal conheaderent-->
 
-                    <!-- Modal body-->
-                    <div class="modal-body">
-                        <!--Product Panel-->
-                        <div class="container-fluid">
-                            <div class="product-panel">
-                                <div class="row">
-                                    <!--First column: carousel gallery-->
-                                    <div class="col-xs-12 col-sm-6 col-lg-4">
-                                        <!-- Carousel -->
-                                        <div id="car-gall" class="carousel slide carousel-fade carousel-thumbnails carousel-gallery">
-                                            <!--Main image-->
-                                            <div class="col-xs-8">
-                                                <!-- Wrapper for slides -->
-                                                <!-- <div class="carousel-inner z-depth-1 hoverable" role="listbox"> -->
-                                                    <!-- First slide -->
-                                                    <div class="card-image">
-                                                        <img class="group list-group-image" src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" style="width: 100px; height: 100px;">
-                                                    </div>
-                                                <!-- </div> -->
-                                                <!-- /.carousel-inner -->
-                                            </div>
-                                            <!--/.Main image-->
-                                        </div>
-                                        <!-- /.carousel -->
-                                    </div>
-                                    <!--/.First column: carousel gallery-->
-
-                                    <!--Second column: product details-->
-                                    <div class="col-xs-12 col-sm-6 col-lg-4">
-                                        <!--Title-->
-                                        {% if product.sail %}
-                                        <span class="label rgba-red-strong">-20%</span>
-                                        <div class="price">
-                                            <p class="green-text medium-500">$500 <span class="discount light-300 black-text">$700</span></p>
-                                        </div>
-                                        {% else %}
-                                        <h5>${{ product.price_in_dollars }}</h5>
-                                        {% endif %}
-                                        {% if product.id in wishlist_ids %}
-                                        <a type="button" class="btn-floating btn-small waves-effect waves-light btn-danger darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
-                                        {% else %}
-                                        <a type="button" class="btn-floating btn-small waves-effect waves-light btn-primary darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
-                                        {% endif %}
-                                        {% if product.quantity > 0 %}
-                                        <div class="bold-700 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
-                                        {% else %}
-                                        <div class="bold-700 " style="color: #ff4444">Not in Stock</div>
-                                        {% endif %}
-                                        <!--Price-->
-                                        <!--Quantity-->
-
-                                        <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                            <div class="row">
-                                                <div class="input-field col-md-10">
-                                                  <label class="col-md-10" id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
-                                                  {{ cart_product_form.quantity }}
+                        <!-- Modal body-->
+                        <div class="modal-body">
+                            <!--Product Panel-->
+                            <div class="container-fluid">
+                                <div class="product-panel">
+                                    <div class="row">
+                                        <!--First column: carousel gallery-->
+                                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                                            <!-- Carousel -->
+                                            <div id="car-gall" class="carousel slide carousel-fade carousel-thumbnails carousel-gallery">
+                                                <!--Main image-->
+                                                <div class="col-xs-8">
+                                                    <!-- Wrapper for slides -->
+                                                    <!-- <div class="carousel-inner z-depth-1 hoverable" role="listbox"> -->
+                                                        <!-- First slide -->
+                                                        <div class="card-image">
+                                                            <img class="group list-group-image" src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" style="width: 100px; height: 100px;">
+                                                        </div>
+                                                    <!-- </div> -->
+                                                    <!-- /.carousel-inner -->
                                                 </div>
+                                                <!--/.Main image-->
                                             </div>
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-success waves-effect waves-light">
-                                                <i class="material-icons">add_shopping_cart<h>Add</h></i>
-                                            </button>
-                                        </form>
-                                        <!--Wish list button-->
-
-                                    </div>
-                                    <!--Third column: product description-->
-                                    <div class="col-xs-12 col-sm-12 col-lg-4">
-                                        <h5>Short description</h5>
-                                        <hr>{{ product.description }}<br>
-                                        <div class="text-center">
-                                            <a class="btn btn-default btn-lg waves-effect waves-light" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">Details</a>
+                                            <!-- /.carousel -->
                                         </div>
+                                        <!--/.First column: carousel gallery-->
+
+                                        <!--Second column: product details-->
+                                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                                            <!--Title-->
+                                            {% if product.sail %}
+                                            <span class="label rgba-red-strong">-20%</span>
+                                            <div class="price">
+                                                <p class="green-text medium-500">$500 <span class="discount light-300 black-text">$700</span></p>
+                                            </div>
+                                            {% else %}
+                                            <h5>${{ product.price_in_dollars }}</h5>
+                                            {% endif %}
+                                            {% if product.id in wishlist_ids %}
+                                            <a type="button" class="btn-floating btn-small waves-effect waves-light btn-danger darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                                            {% else %}
+                                            <a type="button" class="btn-floating btn-small waves-effect waves-light btn-primary darken-4 top-btn" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons">favorite</i></a>
+                                            {% endif %}
+                                            {% if product.quantity > 0 %}
+                                            <div class="bold-700 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
+                                            {% else %}
+                                            <div class="bold-700 " style="color: #ff4444">Not in Stock</div>
+                                            {% endif %}
+                                            <!--Price-->
+                                            <!--Quantity-->
+
+                                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                <div class="row">
+                                                    <div class="input-field col-md-10">
+                                                      <label class="col-md-10" id="{{ cart_product_form.quantity.auto_id }}">{{ cart_product_form.quantity.label }}</label>
+                                                      {{ cart_product_form.quantity }}
+                                                    </div>
+                                                </div>
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-success waves-effect waves-light">
+                                                    <i class="material-icons">add_shopping_cart<h>Add</h></i>
+                                                </button>
+                                            </form>
+                                            <!--Wish list button-->
+
+                                        </div>
+                                        <!--Third column: product description-->
+                                        <div class="col-xs-12 col-sm-12 col-lg-4">
+                                            <h5>Short description</h5>
+                                            <hr>{{ product.description }}<br>
+                                            <div class="text-center">
+                                                <a class="btn btn-default btn-lg waves-effect waves-light" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">Details</a>
+                                            </div>
+                                        </div>
+                                        <!--/.Third column: product description-->
                                     </div>
-                                    <!--/.Third column: product description-->
                                 </div>
                             </div>
+                            <!--/.Product Panel-->
                         </div>
-                        <!--/.Product Panel-->
+                        <!-- /.Modal body-->
+                        <!--Modal footer: close button-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">X</button>
+                        </div>
+                        <!--/.Modal footer: close button-->
                     </div>
-                    <!-- /.Modal body-->
-                    <!--Modal footer: close button-->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">X</button>
-                    </div>
-                    <!--/.Modal footer: close button-->
+                    <!-- Modal content-->
                 </div>
-                <!-- Modal content-->
             </div>
-        </div>
-        <!--/.Modal: QUick look -->
+            <!--/.Modal: QUick look -->
 
-        <div class="item col-xs-12 col-md-3">
-            <div class="thumbnail card card-product hoverable">
-                <img class="group list-group-image " src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
-                <div class="caption">
+            <div class="item col-xs-12 col-md-3">
+                <div class="thumbnail card card-product hoverable">
+                        <div class="row">
+                            <div class="col-md-4 text-left">
+                                <div class="bold-700">
+                                    ${{ product.price_in_dollars }}
+                                </div>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                {% if product.quantity > 0 %}
+                                <div class="bold-70 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
+                                {% else %}
+                                <div class="bold-70 " style="color: #ff4444">Not in Stock</div>
+                                {% endif %}        
+                            </div>                
+                        </div>
+                    <img class="group list-group-image " src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
                     <div class="row">
-                        <div class="col-md-4 text left">
-                            <div class="bold-700">
-                                ${{ product.price_in_dollars }}
+                        <div class="caption">
+                                <div class="text-center">
+                                    <a class="group inner list-group-item-heading hideOverflow" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
+                                </div>
+                                <div class="description">
+                                    {{ product.description }}
+                                    Some descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome description
+                                </div>
+                        </div>
+                    </div>
+                        <div class="row">                  
+                            <div class="col-md-4 text-left">
+                                <a href="#" class="btn btn-info btn-xs waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4 text-right">
+                                {% if product.id in wishlist %}
+                                <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>
+                                {% else %}
+                                <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" >favorite</i></a>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="col-md-8 text-right">
-                            {% if product.quantity > 0 %}
-                            <div class="bold-70 " style="color: #00C851">In Stock: {{ product.quantity }}</div>
-                            {% else %}
-                            <div class="bold-70 " style="color: #ff4444">Not in Stock</div>
-                            {% endif %}
-                        </div>                
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-left" >
-                            <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
-                        </div>
-
-                    </div>
-                    <div class="row">                        
-                        <div class="col-md-4">
-                            <a href="#" class="btn btn-info btn-xs waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
-                        </div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4 text-center">
-                            {% if product.id in wishlist_ids %}
-                            <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>
-                            {% else %}
-                            <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" >favorite</i></a>
-                            {% endif %}
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+    </div>
 {% endblock content %}
