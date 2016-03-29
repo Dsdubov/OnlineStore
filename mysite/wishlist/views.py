@@ -4,6 +4,8 @@ from bikeshop.models import Product
 from .models import Wishlist
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from cart.forms import CartAddProductForm
+
 
 def wishlist_button(request, product_id):
     wishlist = Wishlist(request)
@@ -12,9 +14,10 @@ def wishlist_button(request, product_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def wishlist_detail(request):
+    cart_product_form = CartAddProductForm()
     wishlist = Wishlist(request)
     if wishlist:
 	    wishlist_ids = [int(x) for x in wishlist.get_product_ids()]
     else:
     	wishlist_ids = []
-    return render(request, 'wishlist/wishlist.html', {'wishlist': wishlist, 'wishlist_ids' : wishlist_ids})
+    return render(request, 'wishlist/wishlist.html', {'wishlist': wishlist, 'wishlist_ids' : wishlist_ids, 'cart_product_form' : cart_product_form})

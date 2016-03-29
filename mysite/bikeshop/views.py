@@ -168,6 +168,7 @@ def get_query(query_string, search_fields):
     return query
 
 def search(request):
+    cart_product_form = CartAddProductForm()
     wishlist = request.session.get(settings.WISHLIST_SESSION_ID)
     if wishlist:
         wishlist_ids = [int(x) for x in wishlist.keys()]
@@ -183,5 +184,5 @@ def search(request):
         found_entries = Product.objects.filter(entry_query).order_by('-price_in_dollars')
 
     return render_to_response('bikeshop/search.html',
-                          { 'query_string': query_string, 'found_entries': found_entries, 'wishlist_ids' :wishlist_ids }, context_instance=RequestContext(request))
+                          { 'query_string': query_string, 'found_entries': found_entries, 'wishlist_ids' :wishlist_ids, 'cart_product_form' : cart_product_form }, context_instance=RequestContext(request))
 

@@ -143,24 +143,17 @@
                                     <div class="card hoverable comment">
                                         <div class="row">
                                             <div class="col-md-10">
-                                            </div>
-                                            {% if user.is_authenticated and comment.user_name == user %}
-                                                <div class="col-md-2 text-right">
-                                                    <a class="btn btn-danger btn-sm" href="{% url 'bikeshop:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                                                </div>
-                                            {% endif %}
-                                        </div><!-- 
-                                        {% if not comment.approved_comment %}
-                                            <a class="btn btn-default" href="{% url 'bikeshop:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                                            <a class="btn btn-default" href="{% url 'bikeshop:comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-                                        {% endif %} -->
-                                        <div class="row">
-                                            <div class="col-md-12">
                                                 {{comment.text|linebreaks}}
+                                            </div>
+                                            <div class="col=md-2">
+                                                {% if user.is_authenticated and comment.user_name == user %}
+                                                    <div class="col-md-2 text-right">
+                                                        <a class="btn btn-danger btn-sm" href="{% url 'bikeshop:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                                                    </div>
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <div class="row">
-
                                             <div class="col-md-6 col-xs-12 text-left">
                                                 By: {{comment.user_name}}
                                             </div>
