@@ -18,6 +18,13 @@ html, body {
     display: none;
 }
 
+.hideOverflow
+{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:block;
+}
+
 #wrapper {
     margin-top: 120px;
     min-height: 100%;

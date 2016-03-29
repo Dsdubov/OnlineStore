@@ -130,10 +130,8 @@
 
         <div class="item col-xs-12 col-md-3">
             <div class="thumbnail card card-product hoverable">
-                <img class="group list-group-image " src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
-                <div class="caption">
                     <div class="row">
-                        <div class="col-md-4 text left">
+                        <div class="col-md-4 text-left">
                             <div class="bold-700">
                                 ${{ product.price_in_dollars }}
                             </div>
@@ -146,22 +144,25 @@
                             {% endif %}        
                         </div>                
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 text-left" >
-                            <a class="group inner list-group-item-heading text-center" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
-                        </div>
-
+                <img class="group list-group-image " src="{% if product.photo %}{% static product.photo %}{% else %}{% static "bikeshop/img/no_image_400_250.png" %}{% endif %}" alt="" style="width: 180px; height: 100px;">
+                <div class="row">
+                    <div class="caption">
+                            <div class="text-center">
+                                <a class="group inner list-group-item-heading hideOverflow" href="{% if product.details.all.exists %}{% url "bikeshop:product_detail" product.name %}{% else %}#{%endif%}">{{ product.name }}</a>
+                            </div>
+                            <div class="description">
+                                {{ product.description }}
+                                Some descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome description
+                            </div>
                     </div>
-                    <div class="row">                        
-                        <div class="col-md-4">
+                </div>
+                    <div class="row">                  
+                        <div class="col-md-4 text-left">
                             <a href="#" class="btn btn-info btn-xs waves-effect waves-light" data-toggle="modal" data-target="#{{product.id}}">Quick look</a>
                         </div>
                         <div class="col-md-4">
-                            <div class="description">
-                                {{ product.description }}
-                            </div>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-4 text-right">
                             {% if product.id in wishlist %}
                             <a type="button" href="{% url "wishlist:wishlist_button" product.id %}" ><i class="material-icons" style="color: red">favorite</i></a>
                             {% else %}
@@ -169,7 +170,6 @@
                             {% endif %}
                         </div>
                     </div>
-                </div>
             </div>
         </div>
         {% endfor %}
