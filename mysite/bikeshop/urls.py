@@ -18,6 +18,5 @@ urlpatterns = [
     url(r'^(?P<catalog_name>[a-z A-Z 0-9]+)/categories/$', views.categories_list, name='categories_list'),
     url(r'^(?P<category_name>[a-z A-Z 0-9]+)/products/$', views.product_list, name='product_list'),
     url(r'^(?P<product_name>[a-z A-Z 0-9]+)/details/$', views.product_details, name='product_detail'),
-    url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
 	url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
 ]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

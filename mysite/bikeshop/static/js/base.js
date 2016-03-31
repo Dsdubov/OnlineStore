@@ -75,3 +75,8 @@ $(document).ready(function () {
         $('#wrapper').toggleClass('toggled');
   });  
 });
+
+// $(document).ready(function () {
+//   var message  = $('{{message}}');
+//   alert(message);
+// }

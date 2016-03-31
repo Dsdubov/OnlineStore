@@ -17,7 +17,10 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
+from django.contrib import messages
+
 def start(request):
+
     return render(request, 'bikeshop/start.html')
     
 def cart(request):
@@ -77,19 +80,11 @@ def add_comment(request, product_id):
     return render(request, 'bikeshop/product_detail.html', {'comment_form': form, 'product' : product})
 
 @login_required
-def comment_approve(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.approve()
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    # return redirect('blog.views.product_detail', pk=comment.product.pk)
-
-@login_required
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     product_pk = comment.product.pk
     comment.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    # return redirect('blog.views.product_detail', pk=product_pk)
 
 def register(request):
     context = RequestContext(request)
@@ -126,31 +121,19 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             else:
-                return HttpResponse("Your account is disabled.")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
-            print ("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            messages.add_message(request, messages.INFO, 'Invalid login details')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         return render_to_response('bikeshop/login.html', {}, context)
 
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
                     normspace=re.compile(r'\s{2,}').sub):
-    ''' Splits the query string in invidual keywords, getting rid of unecessary spaces
-        and grouping quoted words together.
-        Example:
-        
-        >>> normalize_query('  some random  words "with   quotes  " and   spaces')
-        ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
-    
-    '''
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)] 
 
 def get_query(query_string, search_fields):
-    ''' Returns a query, that is a combination of Q objects. That combination
-        aims to search keywords within a model by testing the given search fields.
-    
-    '''
     query = None # Query to search for every search term        
     terms = normalize_query(query_string)
     for term in terms:
