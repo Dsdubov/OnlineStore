@@ -28,8 +28,8 @@ class Wishlist(object):
         """
         product_ids = self.wishlist.keys()
         products = Product.objects.filter(id__in=product_ids)
-        # for product in products:
-        #     self.wishlist[str(product.id)]['product'] = product
+        for product in products:
+            self.wishlist[str(product.id)]['product'] = product
 
         for item in self.wishlist.values():
             yield item
