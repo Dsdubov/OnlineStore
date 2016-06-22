@@ -32,7 +32,6 @@ class Wishlist(object):
             self.wishlist[str(product.id)]['product'] = product
 
         for item in self.wishlist.values():
-            item['price'] = Decimal(item['price'])
             yield item
 
     def add_remove(self, product):

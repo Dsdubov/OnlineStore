@@ -143,19 +143,7 @@
               <div class="col-md-10">
                   {% block content %}
                   {% endblock content %}
-{% if messages %}
-<nav class="messages navbar navbar-fixed-bottom" style="margin-left: 222px; margin-right: 200px; margin-bottom: 10px">
-  {% for message in messages %}
-  <div class="alert alert-info ">
-    <strong>{{ message }}!</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  </div>
-<!--     <script>
-        alert('{{ message }}');
-    </script> -->
-  {% endfor %}
-</nav>
-{% endif %}
+              
               </div>
               <div class="col-md-2 text-center">Something right
               </div>
@@ -192,5 +180,17 @@
   </body>
 
 
-
+{% if messages %}
+<nav class="messages navbar navbar-fixed-top" style="text-align: center; font-size: 20;">
+  {% for message in messages %}
+  <div class="alert alert-danger">
+    <strong>{{ message }}!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  </div>
+<!--     <script>
+        alert('{{ message }}');
+    </script> -->
+  {% endfor %}
+</nav>
+{% endif %}
 </html>
