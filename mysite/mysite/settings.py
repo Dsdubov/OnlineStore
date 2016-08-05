@@ -135,3 +135,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dubiman2011@gmail.com'
 EMAIL_HOST_PASSWORD = 'WwOgE1505'
 EMAIL_PORT = 587
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'

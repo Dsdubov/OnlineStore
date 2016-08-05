@@ -1,4 +1,4 @@
-# from django.db import models
+from django.db import models
 from decimal import Decimal
 from django.conf import settings
 from bikeshop.models import Product
@@ -48,11 +48,11 @@ class Wishlist(object):
 
     def save(self):
         self.session[settings.WISHLIST_SESSION_ID] = self.wishlist
-        # self.session.modified = True
+        self.session.modified = True
 
     def clear(self):
         self.session[settings.WISHLIST_SESSION_ID] = {}
-        # self.session.modified = True
+        self.session.modified = True
         
     def get_product_ids(self):
         return self.wishlist.keys()

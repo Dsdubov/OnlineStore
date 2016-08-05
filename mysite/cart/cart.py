@@ -70,7 +70,6 @@ class Cart(object):
     def save(self):
         self.session[settings.CART_SESSION_ID] = self.cart
         self.session[settings.CART_SESSION_LEN] = sum(item['quantity'] for item in self.cart.values())
-        print(self.session[settings.CART_SESSION_LEN])
         self.session.modified = True
 
     def clear(self):
